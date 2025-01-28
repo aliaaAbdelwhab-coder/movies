@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
@@ -76,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: height * 0.01,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, ForgotPasswordScreen.routeName);
+                    },
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
@@ -97,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     TextSpan(children: [
                       TextSpan(
-                          text: 'Dont Have Account? ',
+                          text: 'Don\'t Have Account? ',
                           style: AppStyles.regular14WhiteRoboto),
                       TextSpan(
                           text: 'create one',

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:movies/home.dart';
+import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/utils/app_theme.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Home.homeRoute: (context) => Home(),
        LoginScreen.routeName: (context)=> LoginScreen(),
+        ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
       },
       theme: AppTheme.myTheme,
     );
