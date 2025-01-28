@@ -32,4 +32,13 @@ class AssetsManager {
   static const String forgotPasswordImage =
       'assets/images/Forgot password-image.png';
   static const String profileAvatar = 'assets/images/profile_avatar.png';
+  static const String Avatar1 = 'assets/images/Avatar1.png';
+  static const String Avatar2 = 'assets/images/Avatar2.png';
+  static const String Avatar3 = 'assets/images/Avatar3.png';
+  static const String Avatar4 = 'assets/images/Avatar4.png';
+  static const String Avatar5 = 'assets/images/Avatar5.png';
+  static const String Avatar6 = 'assets/images/Avatar6.png';
+  static const String Avatar7 = 'assets/images/Avatar7.png';
+  static const String Avatar8 = 'assets/images/Avatar8.png';
+  static const String Avatara0 = 'assets/images/Avatar0.png';  
 }
