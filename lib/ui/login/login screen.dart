@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //login with google
                     },
                     textStyle: AppStyles.regular16greyRoboto,
-                    icon: Image.asset(AssetsManager.googleIcon),
+                    prefixIcon: Image.asset(AssetsManager.googleIcon),
                     text: ' Login With Google'),
                 SizedBox(
                   height: height * 0.02,

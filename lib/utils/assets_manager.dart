@@ -1,5 +1,6 @@
 class AssetsManager {
   static const String logo = 'assets/images/splsh_logo.png';
+  static const String popCorn = 'assets/images/popCorn.png';
   static const String branding = 'assets/images/splsh_branding.png';
   static const String onBoarding1 = 'assets/images/onBoarding_image1.png';
   static const String onBoarding2 = 'assets/images/onBoarding_image2.png';
