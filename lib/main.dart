@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Home.homeRoute: (context) => Home(),
        LoginScreen.routeName: (context)=> LoginScreen(),
+       Registerui.registerRoute: (context)=> Registerui(),
       },
       theme: AppTheme.myTheme,
     );

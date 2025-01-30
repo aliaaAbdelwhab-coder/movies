@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/Register/registerUI.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
@@ -45,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         return 'please enter email';
                       }
                       final bool emailValid = RegExp(
-                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(text);
                       if (!emailValid) {
                         return 'please enter a valid email';
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                     prefixIcon: Image.asset(AssetsManager.emailIcon),
-                    hintText:'Email'),
+                    hintText: 'Email'),
                 SizedBox(
                   height: height * 0.02,
                 ),
@@ -79,17 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {},
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Text(
-                        'forget_password',
-                        style: AppStyles.regular14YellowRoboto
-                      ),
+                      child: Text('forget_password',
+                          style: AppStyles.regular14YellowRoboto),
                     )),
                 SizedBox(
                   height: height * 0.02,
                 ),
-                CustomElevatedButton(
-                    onButtonClicked: login,
-                    text: 'Login'),
+                CustomElevatedButton(onButtonClicked: login, text: 'Login'),
                 SizedBox(
                   height: height * 0.02,
                 ),
@@ -102,9 +99,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                           text: 'create one',
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () {},
-                          style: AppStyles.regular14YellowRoboto
-                      )
+                            ..onTap = () {
+                              Navigator.pushNamed(context, Registerui.registerRoute);
+                            },
+                          style: AppStyles.regular14YellowRoboto)
                     ])),
                 SizedBox(
                   height: height * 0.02,
@@ -120,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Text(
-                    'OR',
+                      'OR',
                       style: AppStyles.regular15YellowRoboto,
                     ),
                     Expanded(
@@ -148,21 +146,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Center(
                   child: Container(
-                    width: width*0.240,
+                    width: width * 0.240,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: AppColors.yellowColor,
-                        width: 2
-                      )
-                    ),
+                        borderRadius: BorderRadius.circular(24),
+                        border:
+                            Border.all(color: AppColors.yellowColor, width: 2)),
                     child: Row(
                       children: [
                         CircleAvatar(
                           child: Image.asset(AssetsManager.americaIcon),
                           backgroundColor: AppColors.yellowColor,
                         ),
-                        SizedBox(width: width*0.03,),
+                        SizedBox(
+                          width: width * 0.03,
+                        ),
                         CircleAvatar(
                           backgroundColor: AppColors.blackColor,
                           child: Image.asset(AssetsManager.egyptIcon),
@@ -180,10 +177,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void login() async {
-
     if (formKey.currentState?.validate() == true) {
       //login
-
-      }
     }
+  }
 }

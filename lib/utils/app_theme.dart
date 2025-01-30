@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/utils/app_styles.dart';
 
 import 'app_colors.dart';
 
@@ -16,7 +17,9 @@ class AppTheme {
         backgroundColor: AppColors.blackColor,
         iconTheme: IconThemeData(
           color: AppColors.yellowColor,
+          
         ),
+        titleTextStyle: AppStyles.regular16YellowRoboto,
       )
       );
 }
