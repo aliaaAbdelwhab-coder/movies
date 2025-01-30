@@ -17,5 +17,6 @@ class AppTheme {
         iconTheme: IconThemeData(
           color: AppColors.yellowColor,
         ),
-      ));
+      )
+      );
 }
