@@ -123,7 +123,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 backgroundImage: AssetImage(AssetsManager.profileAvatar),
               ),
             ),
-          ),
+          ),),
           SizedBox(height: height * 0.06),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -150,7 +150,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
           ),
 
-          SizedBox(height:height*0.24),
+          SizedBox(height:height*0.15),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
