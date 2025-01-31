@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         BrowseTab.routeName: (context) => BrowseTab(),
 
       },
-      theme: AppTheme.myTheme,
+    
     );
     
   }
