@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/assets_manager.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class LocalizationToggleswitch extends StatefulWidget {
   @override
