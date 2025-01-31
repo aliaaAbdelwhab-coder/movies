@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/login/login%20screen.dart';
+import 'package:movies/ui/updateProfile/updateProfile.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
@@ -85,6 +86,10 @@ class ProfileTab extends StatelessWidget {
                                 text: 'Edit Profile',
                                 onButtonClicked: () {
                                   // todo: navigate to update profile screen
+                                  Navigator.pushNamed(
+                                    context,
+                                    Updateprofile.routeName
+                                  );
                                 },
                                 textStyle: AppStyles.regular20BlackRoboto)),
                         SizedBox(
@@ -95,7 +100,8 @@ class ProfileTab extends StatelessWidget {
                             child: CustomElevatedButton(
                               text: 'Exit',
                               onButtonClicked: () {
-                                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                                Navigator.pushReplacementNamed(
+                                    context, LoginScreen.routeName);
                               },
                               backgroundColor: AppColors.redColor,
                               textStyle: AppStyles.regular20WhiteRoboto,

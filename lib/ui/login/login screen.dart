@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/Register/registerUI.dart';
+import 'package:movies/ui/Register/registerUI.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';

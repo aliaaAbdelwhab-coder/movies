@@ -1,7 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:movies/Register/registerUI.dart';
+
 import 'package:movies/home.dart';
+import 'package:movies/ui/Register/registerUI.dart';
 
 import 'package:movies/ui/login/login%20screen.dart';
 
@@ -11,6 +12,7 @@ import 'package:movies/ui/tabs/home/home_tab.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
+import 'package:movies/ui/updateProfile/updateProfile.dart';
 
 import 'package:movies/utils/app_theme.dart';
 
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
         ProfileTab.routeName: (context) => ProfileTab(),
         SearchTab.routeName: (context) => SearchTab(),
         BrowseTab.routeName: (context) => BrowseTab(),
-
+        Updateprofile.routeName:(context) =>Updateprofile(),
       },
       theme: AppTheme.myTheme,
     );
