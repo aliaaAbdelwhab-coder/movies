@@ -2,6 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
+
+import 'package:movies/ui/login/login%20screen.dart';
+
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/tabs/home/home_tab.dart';
@@ -20,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: LoginScreen.routeName,   
       home: Registerui(),
       routes: {
         Home.homeRoute: (context) => Home(),
