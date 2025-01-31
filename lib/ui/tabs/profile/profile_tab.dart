@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/login/login%20screen.dart';
+import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
@@ -84,6 +85,7 @@ class ProfileTab extends StatelessWidget {
                             child: CustomElevatedButton(
                                 text: 'Edit Profile',
                                 onButtonClicked: () {
+                                  Navigator.of(context).pushNamed(UpdateProfile.routeName);
                                   // todo: navigate to update profile screen
                                 },
                                 textStyle: AppStyles.regular20BlackRoboto)),

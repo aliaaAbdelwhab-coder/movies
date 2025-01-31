@@ -6,6 +6,7 @@ import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/tabs/home/home_tab.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
+import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
 import 'package:movies/utils/app_theme.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ProfileTab.routeName: (context) => ProfileTab(),
         SearchTab.routeName: (context) => SearchTab(),
         BrowseTab.routeName: (context) => BrowseTab(),
+        UpdateProfile.routeName : (context) => UpdateProfile(),
       },
       theme: AppTheme.myTheme,
     );
