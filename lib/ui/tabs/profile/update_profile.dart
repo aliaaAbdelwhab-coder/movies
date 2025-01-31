@@ -35,27 +35,35 @@ class _UpdateProfileState extends State<UpdateProfile> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.amber, size: 25),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            SizedBox(width: 150),
-            Text(
-              'Pick Avatar',
-              style: AppStyles.regular16YellowRoboto,
-            ),
-          ],
+        title: Text(
+          'Pick Avatar',
+          style: AppStyles.regular16YellowRoboto,
         ),
+        centerTitle: true,
+        //  Row(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: [
+        //     IconButton(
+        //       icon: Icon(Icons.arrow_back, color: Colors.amber, size: 25),
+        //       onPressed: () {
+        //         Navigator.pop(context);
+        //       },
+        //     ),
+        //     SizedBox(width: 150),
+        //     Text(
+        //       'Pick Avatar',
+        //       style: AppStyles.regular16YellowRoboto,
+        //     ),
+
+        //   ],
+        // ),
       ),
-      body: Column(
+      body:
+       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
+
             child: GestureDetector(
               onTap: () {
                 showModalBottomSheet(
@@ -106,6 +114,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   },
                 );
               },
+
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: height * 0.06),
+
               child: CircleAvatar(
                 radius: 75,
                 backgroundImage: AssetImage(AssetsManager.profileAvatar),
@@ -137,7 +149,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
               style: AppStyles.regular15WhiteRoboto,
             ),
           ),
-          SizedBox(height: 120),
+
+          SizedBox(height:height*0.24),
+
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -170,6 +184,4 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
   }
 }
-
-
 

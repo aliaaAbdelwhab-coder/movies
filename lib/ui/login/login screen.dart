@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/Register/registerUI.dart';
+import 'package:movies/home.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
@@ -78,7 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, ForgotPasswordScreen.routeName);
+                      Navigator.pushNamed(
+                          context, ForgotPasswordScreen.routeName);
                     },
                     child: Align(
                       alignment: Alignment.centerRight,
@@ -102,7 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           text: 'create one',
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, Registerui.registerRoute);
+                              Navigator.pushNamed(
+                                  context, Registerui.registerRoute);
                             },
                           style: AppStyles.regular14YellowRoboto)
                     ])),
@@ -181,6 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void login() async {
     if (formKey.currentState?.validate() == true) {
       //login
+      Navigator.pushReplacementNamed(context, Home.homeRoute);
     }
   }
 }
