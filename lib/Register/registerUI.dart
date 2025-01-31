@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/home.dart';
+import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
@@ -53,21 +55,17 @@ class _RegisteruiState extends State<Registerui> {
           child: Column(
             children: [
               CarouselSlider.builder(
-                
                 itemCount: avatarList.length,
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) =>
                         Container(
-                            width: selectedIndex == itemIndex
-                              ? size.width*0.4 
-                              : null, 
-                        
-                          child: Image.asset(
-                            fit:selectedIndex == itemIndex?  BoxFit.contain: null,
-                            avatarList[itemIndex],
-                          ),
-                        ),
-                options: CarouselOptions(                       
+                  width: selectedIndex == itemIndex ? size.width * 0.4 : null,
+                  child: Image.asset(
+                    fit: selectedIndex == itemIndex ? BoxFit.contain : null,
+                    avatarList[itemIndex],
+                  ),
+                ),
+                options: CarouselOptions(
                   onPageChanged: (index, CarouselPageChangedReason) {
                     selectedIndex = index;
                     setState(() {});
@@ -125,6 +123,7 @@ class _RegisteruiState extends State<Registerui> {
                           height: size.height * 0.02,
                         ),
                         CustomTextField(
+                          controller: passController,
                           hintText: 'Password',
                           prefixIcon: Image.asset(AssetsManager.passwordIcon),
                           suffixIcon: Image.asset(AssetsManager.eyeSlashIcon),
@@ -165,6 +164,7 @@ class _RegisteruiState extends State<Registerui> {
                         ),
                         CustomTextField(
                           hintText: 'Phone number',
+                          keyboard: TextInputType.number,
                           prefixIcon: Image.asset(AssetsManager.phoneIcon),
                           validator: (text) {
                             if (text == null || text.trim().isEmpty) {
@@ -181,7 +181,9 @@ class _RegisteruiState extends State<Registerui> {
                         ),
                         CustomElevatedButton(
                           text: 'Create Account',
-                          onButtonClicked: () {},
+                          onButtonClicked: () {
+                            Register();
+                          },
                         ),
                         SizedBox(
                           height: size.height * 0.02,
@@ -194,7 +196,10 @@ class _RegisteruiState extends State<Registerui> {
                               style: AppStyles.regular14WhiteRoboto,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushReplacementNamed(
+                                    context, LoginScreen.routeName);
+                              },
                               child: Text(
                                 "Login",
                                 style: AppStyles.black14YellowRoboto,
@@ -215,5 +220,11 @@ class _RegisteruiState extends State<Registerui> {
       ),
     );
   }
-}
 
+  void Register() async {
+    if (formKey.currentState?.validate() == true) {
+      // Register
+      Navigator.pushReplacementNamed(context, Home.homeRoute);
+    }
+  }
+}
