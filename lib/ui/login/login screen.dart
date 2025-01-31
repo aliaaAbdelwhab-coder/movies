@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/Register/registerUI.dart';
-
+import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
 import '../../utils/assets_manager.dart';
@@ -77,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: height * 0.01,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, ForgotPasswordScreen.routeName);
+                    },
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text('forget_password',
@@ -94,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     TextSpan(children: [
                       TextSpan(
-                          text: 'Dont Have Account? ',
+                          text: 'Don\'t Have Account? ',
                           style: AppStyles.regular14WhiteRoboto),
                       TextSpan(
                           text: 'create one',
@@ -139,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //login with google
                     },
                     textStyle: AppStyles.regular16greyRoboto,
-                    icon: Image.asset(AssetsManager.googleIcon),
+                    prefixIcon: Image.asset(AssetsManager.googleIcon),
                     text: ' Login With Google'),
                 SizedBox(
                   height: height * 0.02,
