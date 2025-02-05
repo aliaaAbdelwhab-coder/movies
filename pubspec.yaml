@@ -41,6 +41,14 @@ dependencies:
   toggle_switch: ^2.3.0
 
   flutter_native_splash: ^2.4.4
+  card_swiper: ^3.0.1
+  dio: ^5.8.0+1
+  retrofit_generator: ^9.1.7
+  retrofit: ^4.4.2
+  pretty_dio_logger: ^1.4.0
+  get_it: ^8.0.3
+  freezed: ^2.5.8
+  freezed_annotation: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +60,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  json_serializable: ^6.9.3
+  build_runner: ^2.4.14
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
