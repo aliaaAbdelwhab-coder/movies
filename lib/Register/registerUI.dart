@@ -53,7 +53,7 @@ class _RegisteruiState extends State<Registerui> {
               title: "Error",
               posActionsName: "OK",
             );
-          print(state.errorMessage);
+          
         }
         if (state is SucsessStates) {
           Dialogutils.hideLoading(context: context);
