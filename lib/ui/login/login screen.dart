@@ -13,6 +13,7 @@ import '../../utils/assets_manager.dart';
 import '../../utils/dialogUtils.dart';
 import '../../widget/button widget.dart';
 import '../../widget/text field widget.dart';
+import 'google sign in api.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
@@ -23,6 +24,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 LoginViewModel viewModel=LoginViewModel();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -176,9 +179,7 @@ LoginViewModel viewModel=LoginViewModel();
                     height: height * 0.02,
                   ),
                   CustomElevatedButton(
-                      onButtonClicked: () {
-                        //login with google
-                      },
+                      onButtonClicked: signIn,
                       textStyle: AppStyles.regular16greyRoboto,
                       prefixIcon: Image.asset(AssetsManager.googleIcon),
                       text: ' Login With Google'),
@@ -195,5 +196,10 @@ LoginViewModel viewModel=LoginViewModel();
     );
   }
 
+
+
+Future  signIn()async {
+  await GoogleSignInApi.login();
+  }
 
 }

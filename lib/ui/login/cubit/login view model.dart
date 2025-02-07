@@ -21,12 +21,14 @@ class LoginViewModel extends Cubit<LoginStates>{
       var url = Uri.https(Apiconstatnts.serverName, Apiconstatnts.loginEndPoints);
 
       try {
-        var response = await http.post(url,
-            headers: {'Content-Type': 'application/json'},
+        var response = await http.post(
+            url,
+            headers: {"Content-Type": "application/json",},
             body: jsonEncode({
-              "email":"amr2@gmail.com",
-              "password":"Test2510@"
+              "email":emailController.text.trim(),
+              "password":passwordController.text.trim()
             }));
+
         var json = jsonDecode(response.body);
 
         LoginModel loginResponse = LoginModel.fromJson(json);

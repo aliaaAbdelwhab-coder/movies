@@ -24,7 +24,7 @@ class Registerviewmodle extends Cubit<Registerstates> {
     if (formKey.currentState?.validate() == true) {
       emit(LoadingState());
       var url =
-          Uri.https(Apiconstatnts.serverName, Apiconstatnts.loginEndPoints);
+          Uri.https(Apiconstatnts.serverName, Apiconstatnts.registerEndPoints);
 
       try {
         var response = await http.post(url,

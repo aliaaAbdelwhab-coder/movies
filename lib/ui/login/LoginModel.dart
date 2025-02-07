@@ -9,9 +9,13 @@ int? statusCode;
       this.data,});
 
   LoginModel.fromJson(dynamic json) {
-    message = json['message'];
+   // message = json['message'];
     data = json['data'];
     statusCode= json['statusCode'];
+
+    message= json['message'] is List
+        ? (json['message'] as List).join("\n") // Convert list to string with line breaks
+        : json['message'].toString();
   }
 
 
