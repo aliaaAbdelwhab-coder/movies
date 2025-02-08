@@ -36,11 +36,13 @@ class LoginViewModel extends Cubit<LoginStates> {
         var json = jsonDecode(response.body);
 
         LoginModel loginResponse = LoginModel.fromJson(json);
-        saveToken(loginResponse.data!);
+        
         if (loginResponse.statusCode != null) {
           emit(ErrorLoginState(errorMessage: loginResponse.message!));
         } else {
+          saveToken(loginResponse.data!);
           emit(SuccessLoginState(
+            
               SuccessMessage: loginResponse.message!,
               data: loginResponse.data!));
         }
