@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
         ProfileTab.routeName: (context) => ProfileTab(),
         SearchTab.routeName: (context) => SearchTab(),
         BrowseTab.routeName: (context) => BrowseTab(),
-
-        UpdateProfile.routeName : (context) => UpdateProfile(),
+       UpdateProfile.routeName : (context) => UpdateProfile()
 
 
 
