@@ -24,11 +24,19 @@ class MovieItem extends StatelessWidget {
         print('Go To Movie Details');
       },
       child: Container(
-        height: height * .6,
+        height: height * .65,
         child: Stack(
           alignment: Alignment.center,
           fit: StackFit.expand,
           children: [
+            Image.asset(
+              'assets/images/onBoarding_image6.png',
+              fit: BoxFit.fill,
+            ),
+            Image.asset(
+              'assets/images/home_bg.png',
+              fit: BoxFit.fill,
+            ),
             CarouselSlider.builder(
               itemCount: movies.length,
               itemBuilder: (context, index, realId) {
@@ -99,7 +107,7 @@ class MovieItem extends StatelessWidget {
                 );
               },
               options: CarouselOptions(
-                height: height * .6,
+                height: height * .5,
                 viewportFraction: 0.72,
                 aspectRatio: 2,
                 autoPlay: true,
