@@ -37,6 +37,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (BuildContext context) => LocalizationBloc(),
       child: BlocBuilder<LocalizationBloc, localizationState>(builder: (context, state) {
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         );
       }
       ),
+
 
     );
   }
