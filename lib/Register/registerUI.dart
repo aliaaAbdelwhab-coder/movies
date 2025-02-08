@@ -221,7 +221,7 @@ class _RegisteruiState extends State<Registerui> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Already Have Account ?  ",
+                                AppLocalizations.of(context)!.already_have_account+" ? ",
                                 style: AppStyles.regular14WhiteRoboto,
                               ),
                               InkWell(

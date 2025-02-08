@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/assets_manager.dart';
 
@@ -24,6 +26,7 @@ class _LocalizationToggleswitchState extends State<LocalizationToggleswitch> {
           InkWell(
             onTap: () {
               isSelected = 0;
+            context.read<LocalizationBloc>().changeLocale('en');
               setState(() {
               });              
             },
@@ -35,6 +38,7 @@ class _LocalizationToggleswitchState extends State<LocalizationToggleswitch> {
           InkWell(
             onTap: () {
               isSelected = 1;
+              context.read<LocalizationBloc>().changeLocale('ar');
               setState(() {
               });
             },

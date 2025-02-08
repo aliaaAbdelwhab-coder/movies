@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
+import 'package:movies/localization/localizationSatates.dart';
+import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/utils/app_theme.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
@@ -22,31 +25,32 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.myTheme,
-      initialRoute: IntroductionScreen.routeName,
-      routes: {
-        IntroductionScreen.routeName: (context) => IntroductionScreen(),
-        OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
-        Home.homeRoute: (context) => Home(),
-        Registerui.registerRoute  :(context)=>Registerui(),
-        LoginScreen.routeName: (context) => LoginScreen(),
-        ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
-        HomeTab.routeName: (context) => HomeTab(),
-        ProfileTab.routeName: (context) => ProfileTab(),
-        SearchTab.routeName: (context) => SearchTab(),
-        BrowseTab.routeName: (context) => BrowseTab(),
-
-        UpdateProfile.routeName : (context) => UpdateProfile(),
-
-
-
-      },
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
-    supportedLocales: AppLocalizations.supportedLocales,
-    locale: Locale("ar"),  
+    return BlocProvider(
+      create: (BuildContext context) => LocalizationBloc(),
+      child: BlocBuilder<LocalizationBloc, localizationState>(builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.myTheme,
+          initialRoute: IntroductionScreen.routeName,
+          routes: {
+            IntroductionScreen.routeName: (context) => IntroductionScreen(),
+            OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
+            Home.homeRoute: (context) => Home(),
+            Registerui.registerRoute: (context) => Registerui(),
+            LoginScreen.routeName: (context) => LoginScreen(),
+            ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
+            HomeTab.routeName: (context) => HomeTab(),
+            ProfileTab.routeName: (context) => ProfileTab(),
+            SearchTab.routeName: (context) => SearchTab(),
+            BrowseTab.routeName: (context) => BrowseTab(),
+            UpdateProfile.routeName: (context) => UpdateProfile(),
+          },
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: Locale(state.local),
+        );
+      }
+      ),
     );
-    
   }
 }

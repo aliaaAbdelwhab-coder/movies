@@ -34,5 +34,6 @@
   "genres": "أنواع",
   "horror": "رعب",
   "character": "شخصية",
-  "avatar":"الصورة الرمزية"
+  "avatar":"الصورة الرمزية",
+  "already_have_account":"لديك حساب بالفعل"
 }

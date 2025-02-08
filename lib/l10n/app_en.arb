@@ -34,5 +34,6 @@
   "genres":"Genres",
   "horror":"Horror",
   "character":"Character",
-  "avatar":"Avatar"
+  "avatar":"Avatar",
+  "already_have_account":"Already Have Account"
 }
