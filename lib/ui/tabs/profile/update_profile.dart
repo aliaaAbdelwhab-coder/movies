@@ -20,18 +20,19 @@ class UpdateProfile extends StatefulWidget {
 class _UpdateProfileState extends State<UpdateProfile> {
   UpdateProfileRepository updateProfileRepository = UpdateProfileRepository();
   String selectedAvatar = AssetsManager.profileAvatar;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  UpdateProfileBloc viewmodle = UpdateProfileBloc();
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<UpdateProfileBloc, UpdateProfileState>(
-      
+      bloc: viewmodle,
       listener: (context, state) {
         if (state is UpdateProfileSuccessState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile Updated Successfully!")));
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("Profile Updated Successfully!")));
         } else if (state is UpdateProfileErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.error)));
         } else if (state is DeleteAccountSuccessState) {
           Navigator.pushReplacementNamed(context, LoginScreen.routeName);
         }
@@ -47,29 +48,39 @@ class _UpdateProfileState extends State<UpdateProfile> {
           children: [
             GestureDetector(
               onTap: () => _pickAvatar(context),
-              child: CircleAvatar(radius: 75, backgroundImage: AssetImage(selectedAvatar)),
+              child: CircleAvatar(
+                  radius: 75, backgroundImage: AssetImage(selectedAvatar)),
             ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: CustomTextField(controller: nameController, hintText: "John Safwat"),
+              child: CustomTextField(
+                  controller: viewmodle.nameController,
+                  hintText: "John Safwat"),
             ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: CustomTextField(controller: phoneController, hintText: "0120000000", keyboard: TextInputType.phone),
+              child: CustomTextField(
+                  controller: viewmodle.phoneController,
+                  hintText: "0120000000",
+                  keyboard: TextInputType.phone),
             ),
-            CustomElevatedButton(text: "Delete Account", backgroundColor: Colors.red, onButtonClicked: () {
-              context.read<UpdateProfileBloc>().deleteAccount("user_id");
-            }),
-            CustomElevatedButton(text: "Update Data", backgroundColor: Colors.amber, onButtonClicked: () {
-              
-            }),
+            CustomElevatedButton(
+                text: "Delete Account",
+                backgroundColor: Colors.red,
+                onButtonClicked: () {
+                  viewmodle.deleteAccount();
+                }),
+            CustomElevatedButton(
+                text: "Update Data",
+                backgroundColor: Colors.amber,
+                onButtonClicked: () {
+                  viewmodle.updateProfile(1);
+                }),
           ],
         ),
       ),
     );
   }
 
-  void _pickAvatar(BuildContext context) {
-   
-  }
-} 
+  void _pickAvatar(BuildContext context) {}
+}

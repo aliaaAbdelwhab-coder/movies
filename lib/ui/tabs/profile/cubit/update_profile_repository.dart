@@ -5,18 +5,19 @@ import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/profile/update_profile_model.dart';
 
 class UpdateProfileRepository {
-  Future<UpdateProfileModel> updateProfile(int statusCode, String message, String error) async {
+  Future<UpdateProfileModel> updateProfile({required int avaterId, required String name,required String phone ,required String token}) async {
     var url = Uri.https(Apiconstatnts.serverName, Apiconstatnts.updateProfileEndPoint); 
 
     try {
       final response = await http.patch(
         url,
         body: jsonEncode({
-          "statusCode": statusCode,
-          "message": message,
-          "error": Error,
+          "name": name,
+          "phone": phone,
+          "avaterId": avaterId,
         }),
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json",
+        "Authorization": "Bearer $token",},
       );
 
       return UpdateProfileModel.fromJson(jsonDecode(response.body));
@@ -25,13 +26,15 @@ class UpdateProfileRepository {
     }
   }
 
-  Future<void> deleteAccount(String id) async {
+  Future<void> deleteAccount(String token) async {
     var url = Uri.https(Apiconstatnts.serverName, Apiconstatnts.deleteAccountEndPoint); 
 
     try {
       final response = await http.delete(
         url,
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json" ,
+                   "Authorization": "Bearer $token",
+        },
       );
 
       return;
