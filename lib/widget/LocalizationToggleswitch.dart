@@ -1,38 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/assets_manager.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
-class LocalizationToggleswitch extends StatelessWidget {
-  const LocalizationToggleswitch({super.key});
+class LocalizationToggleswitch extends StatefulWidget {
+  @override
+  State<LocalizationToggleswitch> createState() => _LocalizationToggleswitchState();
+}
+
+class _LocalizationToggleswitchState extends State<LocalizationToggleswitch> {
+  int isSelected = 0;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return ToggleSwitch(
-      borderColor: [AppColors.yellowColor],
-      borderWidth: 2,
-      customWidths: [size.width * 0.15, size.width * 0.15],
-      // activeBorders: [Border.symmetric(horizontal:BorderSide(width: 5) ,vertical: BorderSide(width: 10) )],
-      cornerRadius: 20.0,
-      activeBgColors: [
-        [AppColors.yellowColor],
-        [AppColors.yellowColor]
-      ],
-
-      // activeFgColor: Colors.white,
-      inactiveBgColor: Colors.transparent,
-      // inactiveFgColor: Colors.white,
-      initialLabelIndex: 0,
-      totalSwitches: 2,
-      customWidgets: [
-        Image.asset(AssetsManager.americaIcon),
-        Image.asset(AssetsManager.egyptIcon),
-      ],
-      radiusStyle: true,
-      onToggle: (index) {
-        print('switched to: $index');
-      },
+    return Container(
+      width: size.width * 0.23,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(color: AppColors.yellowColor, width: 2)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () {
+              isSelected = 0;
+            context.read<LocalizationBloc>().changeLocale('en');
+              setState(() {
+              });              
+            },
+            child: CircleAvatar(
+              child: Image.asset(AssetsManager.americaIcon),
+              backgroundColor: isSelected == 0 ? AppColors.yellowColor : AppColors.blackColor,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              isSelected = 1;
+              context.read<LocalizationBloc>().changeLocale('ar');
+              setState(() {
+              });
+            },
+            child: CircleAvatar(
+              child: Image.asset(AssetsManager.egyptIcon),
+              backgroundColor: isSelected == 1
+                  ? AppColors.yellowColor
+                  : AppColors.blackColor,
+            ),
+          ),
+        ],
+      ),
     );
+  
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/home.dart';
 import '../../utils/assets_manager.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
@@ -68,3 +69,4 @@ class IntroductionScreen extends StatelessWidget {
     ]));
   }
 }
+ 

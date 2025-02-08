@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/login/login%20screen.dart';
+import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
 import 'package:movies/widget/button%20widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ProfileTab extends StatelessWidget {
   static const String routeName = 'profile_Tab';
   @override
@@ -19,7 +20,7 @@ class ProfileTab extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: height * 0.02, horizontal: width * 0.0558),
+                    vertical: height * 0.02, horizontal: width * 0.0458),
                 color: AppColors.darkGreyColor,
                 child: Column(
                   children: [
@@ -52,7 +53,7 @@ class ProfileTab extends StatelessWidget {
                                     style: AppStyles.bold36WhiteRoboto,
                                   ),
                                   Text(
-                                    "Wish List",
+                                    AppLocalizations.of(context)!.watch_list,
                                     style: AppStyles.bold24WhiteRoboto,
                                   ),
                                 ],
@@ -65,7 +66,7 @@ class ProfileTab extends StatelessWidget {
                                     style: AppStyles.bold36WhiteRoboto,
                                   ),
                                   Text(
-                                    "History",
+                                  AppLocalizations.of(context)!.history,
                                     style: AppStyles.bold24WhiteRoboto,
                                   ),
                                 ],
@@ -82,8 +83,9 @@ class ProfileTab extends StatelessWidget {
                         Expanded(
                             flex: 2,
                             child: CustomElevatedButton(
-                                text: 'Edit Profile',
+                                text: AppLocalizations.of(context)!.edit_profile,
                                 onButtonClicked: () {
+                                  Navigator.of(context).pushNamed(UpdateProfile.routeName);
                                   // todo: navigate to update profile screen
                                 },
                                 textStyle: AppStyles.regular20BlackRoboto)),
@@ -93,7 +95,7 @@ class ProfileTab extends StatelessWidget {
                         Expanded(
                             flex: 1,
                             child: CustomElevatedButton(
-                              text: 'Exit',
+                              text: AppLocalizations.of(context)!.exit,
                               onButtonClicked: () {
                                 Navigator.pushReplacementNamed(context, LoginScreen.routeName);
                               },
@@ -125,14 +127,14 @@ class ProfileTab extends StatelessWidget {
                           Tab(
                             icon: ImageIcon(
                                 AssetImage(AssetsManager.watchListIcon)),
-                            text: "Watch List",
+                            text: AppLocalizations.of(context)!.watch_list,
                           ),
                           Tab(
                             icon: ImageIcon(
                               AssetImage(AssetsManager.historyIcon),
                               color: AppColors.yellowColor,
                             ),
-                            text: "History",
+                            text:AppLocalizations.of(context)!.history,
                           ),
                         ],
                       ),

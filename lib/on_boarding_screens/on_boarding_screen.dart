@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/ui/login/login%20screen.dart';
 
 import '../home.dart';
 import '../utils/app_colors.dart';
@@ -190,7 +191,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                       onPressed: () {
                         if (isLastPage) {
                           // todo: Navigate to login screen
-                          Navigator.of(context).pushNamed(Home.homeRoute);
+                          Navigator.of(context).pushNamed(LoginScreen.routeName);
                           print('Navigate to login screen');
                         } else {
                           navigatePage(1);
@@ -231,3 +232,4 @@ class OnboardingPage {
     this.description,
   });
 }
+
