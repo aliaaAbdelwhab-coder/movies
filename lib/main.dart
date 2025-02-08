@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/Register/registerUI.dart';
+import 'package:movies/features/home/movie_home_page.dart';
 import 'package:movies/home.dart';
 import 'package:movies/utils/app_theme.dart';
 
@@ -23,6 +24,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,13 +38,14 @@ class MyApp extends StatelessWidget {
         Home.homeRoute: (context) => Home(),
         Registerui.registerRoute  :(context)=>Registerui(),
         LoginScreen.routeName: (context) => LoginScreen(),
-        ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
-        HomeTab.routeName: (context) => HomeTab(),
+        ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
+        HomeTab.routeName: (context) => const HomeTab(),
         ProfileTab.routeName: (context) => ProfileTab(),
-        SearchTab.routeName: (context) => SearchTab(),
-        BrowseTab.routeName: (context) => BrowseTab(),
+        SearchTab.routeName: (context) => const SearchTab(),
+        BrowseTab.routeName: (context) => const BrowseTab(),
 
-        UpdateProfile.routeName : (context) => UpdateProfile(),
+        UpdateProfile.routeName : (context) => const UpdateProfile(),
+        MovieHomePage.routeName: (context) => MovieHomePage(),
 
 
 
