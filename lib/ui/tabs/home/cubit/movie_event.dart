@@ -1,11 +1,8 @@
 part of 'movie_bloc_view_model.dart';
 
-abstract class MovieEvent extends Equatable {
+abstract class MovieEvent {
   const MovieEvent();
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => [];
 }
 
 class GetMovies extends MovieEvent {}

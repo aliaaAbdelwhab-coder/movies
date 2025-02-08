@@ -11,12 +11,14 @@ import '../models/MovieResponse.dart';
 
 class ApiManager {
   Future<MovieResponse?> getMovies() async {
-    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.moviesList);
-    var response = await http.get(url);
-    if (response.statusCode == 200) {
+    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.moviesEndPoint);
+    try {
+      var response = await http.get(url);
+
       return MovieResponse.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Loading movies Failed!');
+    } catch (e) {
+      print(e);
+      throw e.toString();
     }
   }
 }
