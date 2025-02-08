@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_bloc.dart';
+import 'package:movies/ui/tabs/profile/cubit/update_profile_repository.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_states.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
@@ -17,6 +18,7 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
+  UpdateProfileRepository updateProfileRepository = UpdateProfileRepository();
   String selectedAvatar = AssetsManager.profileAvatar;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -24,6 +26,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<UpdateProfileBloc, UpdateProfileState>(
+      
       listener: (context, state) {
         if (state is UpdateProfileSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile Updated Successfully!")));
@@ -58,7 +61,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               context.read<UpdateProfileBloc>().deleteAccount("user_id");
             }),
             CustomElevatedButton(text: "Update Data", backgroundColor: Colors.amber, onButtonClicked: () {
-              context.read<UpdateProfileBloc>().updateProfile("user_id", nameController.text, phoneController.text, selectedAvatar);
+              
             }),
           ],
         ),
@@ -69,4 +72,4 @@ class _UpdateProfileState extends State<UpdateProfile> {
   void _pickAvatar(BuildContext context) {
    
   }
-}
+} 

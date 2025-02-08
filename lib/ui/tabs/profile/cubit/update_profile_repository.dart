@@ -1,35 +1,46 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:movies/Register/register_modle.dart';
+import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/profile/update_profile_model.dart';
 
 class UpdateProfileRepository {
-  Future<UpdateProfileModel> updateProfile(String id, String name, String phone, String avatar) async {
-    final response = await http.put(
-      Uri.parse('https://route-movie-apis.vercel.app/profile'),
-      body: jsonEncode({
-        "id": id,
-        "name": name,
-        "phone": phone,
-        "avatar": avatar,
-      }),
-      headers: {"Content-Type": "application/json"},
-    );
+  Future<UpdateProfileModel> updateProfile(int statusCode, String message, String error) async {
+    var url = Uri.https(Apiconstatnts.serverName, Apiconstatnts.updateProfileEndPoint); 
 
-    if (response.statusCode == 200) {
+    try {
+      final response = await http.patch(
+        url,
+        body: jsonEncode({
+          "statusCode": statusCode,
+          "message": message,
+          "error": Error,
+        }),
+        headers: {"Content-Type": "application/json"},
+      );
+
       return UpdateProfileModel.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception("Failed to update profile");
+    } catch (e) {
+      throw Exception("Failed to update profile: $e");
     }
   }
 
   Future<void> deleteAccount(String id) async {
-    final response = await http.delete(
-      Uri.parse('https://route-movie-apis.vercel.app/profile'),
-      headers: {"Content-Type": "application/json"},
-    );
+    var url = Uri.https(Apiconstatnts.serverName, Apiconstatnts.deleteAccountEndPoint); 
 
-    if (response.statusCode != 200) {
-      throw Exception("Failed to delete account");
+    try {
+      final response = await http.delete(
+        url,
+        headers: {"Content-Type": "application/json"},
+      );
+
+      return;
+    } catch (e) {
+      throw Exception("Error deleting account: $e");
     }
   }
 }
+
+
+
+

@@ -1,31 +1,30 @@
+import 'package:movies/Register/register_modle.dart';
+
 class UpdateProfileModel {
-  final String id;
-  final String name;
-  final String phone;
-  final String avatar;
+  int? statusCode;
+  String? message;
+  String? error;
 
   UpdateProfileModel({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.avatar,
+    required this.statusCode,
+    required this.message,
+    required this.error,
+    
   });
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
-      "name": name,
-      "phone": phone,
-      "avatar": avatar,
+      "statusCode": statusCode,
+        "message": message,
+        "error": error,
     };
   }
 
   factory UpdateProfileModel.fromJson(Map<String, dynamic> json) {
     return UpdateProfileModel(
-      id: json["id"],
-      name: json["name"],
-      phone: json["phone"],
-      avatar: json["avatar"],
+      statusCode: json["statusCode"],
+      message: json["message"],
+      error: json["error"],
     );
   }
 }

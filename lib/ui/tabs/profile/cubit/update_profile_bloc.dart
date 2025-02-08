@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/Register/register_modle.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_repository.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_states.dart';
 
@@ -8,10 +9,10 @@ class UpdateProfileBloc extends Cubit<UpdateProfileState> {
 
   UpdateProfileBloc(this.repository) : super(UpdateProfileInitialState());
 
-  void updateProfile(String id, String name, String phone, String avatar) async {
+  void updateProfile(int statusCode, String message, String error) async {
     emit(UpdateProfileLoadingState());
     try {
-      final user = await repository.updateProfile(id, name, phone, avatar);
+      final user = await repository.updateProfile(statusCode, message, error);
       emit(UpdateProfileSuccessState(user));
     } catch (e) {
       emit(UpdateProfileErrorState(e.toString()));
