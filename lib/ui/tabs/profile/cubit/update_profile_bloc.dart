@@ -17,7 +17,7 @@ class UpdateProfileBloc extends Cubit<UpdateProfileState> {
       String? token = await getToken();
     emit(UpdateProfileLoadingState());
     try {
-      print("${model.data} =============================================");
+      
       final user = await repository.updateProfile(
           avaterId: avatarId,
           name: nameController.text,
