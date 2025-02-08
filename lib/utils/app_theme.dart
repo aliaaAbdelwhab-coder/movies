@@ -6,7 +6,7 @@ import 'app_colors.dart';
 class AppTheme {
   static final ThemeData myTheme = ThemeData(
       primaryColor: AppColors.darkGreyColor,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.darkGreyColor,
         selectedItemColor: AppColors.yellowColor,
         showUnselectedLabels: true,
@@ -15,7 +15,7 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.blackColor,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.blackColor,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: AppColors.yellowColor,
           
         ),

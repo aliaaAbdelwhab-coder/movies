@@ -3,6 +3,8 @@ import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/assets_manager.dart';
 
 class LocalizationToggleswitch extends StatefulWidget {
+  const LocalizationToggleswitch({super.key});
+
   @override
   State<LocalizationToggleswitch> createState() => _LocalizationToggleswitchState();
 }
@@ -28,8 +30,8 @@ class _LocalizationToggleswitchState extends State<LocalizationToggleswitch> {
               });              
             },
             child: CircleAvatar(
-              child: Image.asset(AssetsManager.americaIcon),
               backgroundColor: isSelected == 0 ? AppColors.yellowColor : AppColors.blackColor,
+              child: Image.asset(AssetsManager.americaIcon),
             ),
           ),
           InkWell(
@@ -39,10 +41,10 @@ class _LocalizationToggleswitchState extends State<LocalizationToggleswitch> {
               });
             },
             child: CircleAvatar(
-              child: Image.asset(AssetsManager.egyptIcon),
               backgroundColor: isSelected == 1
                   ? AppColors.yellowColor
                   : AppColors.blackColor,
+              child: Image.asset(AssetsManager.egyptIcon),
             ),
           ),
         ],

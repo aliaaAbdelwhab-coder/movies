@@ -12,6 +12,8 @@ import '../../widget/text field widget.dart';
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
 
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -114,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         color: AppColors.yellowColor,
                         thickness: 2,
@@ -126,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       'OR',
                       style: AppStyles.regular15YellowRoboto,
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         color: AppColors.yellowColor,
                         thickness: 2,
@@ -159,8 +161,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Row(
                       children: [
                         CircleAvatar(
-                          child: Image.asset(AssetsManager.americaIcon),
                           backgroundColor: AppColors.yellowColor,
+                          child: Image.asset(AssetsManager.americaIcon),
                         ),
                         SizedBox(
                           width: width * 0.03,

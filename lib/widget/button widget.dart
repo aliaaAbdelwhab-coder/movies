@@ -13,7 +13,7 @@ class CustomElevatedButton extends StatelessWidget {
   Function onButtonClicked;
 
   CustomElevatedButton(
-      {required this.text,
+      {super.key, required this.text,
       this.prefixIcon,
       this.suffixIcon,
       this.backgroundColor,
@@ -42,8 +42,8 @@ class CustomElevatedButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            prefixIcon ?? SizedBox(),
-            suffixIcon ?? SizedBox(),
+            prefixIcon ?? const SizedBox(),
+            suffixIcon ?? const SizedBox(),
             SizedBox(
               width: width * 0.02,
             ),

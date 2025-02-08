@@ -8,6 +8,8 @@ import '../utils/app_styles.dart';
 class OnBoardingScreen extends StatefulWidget {
   static const String routeName = 'on Boarding Screen';
 
+  const OnBoardingScreen({super.key});
+
   @override
   State<OnBoardingScreen> createState() => OnBoardingScreenState();
 }
@@ -54,7 +56,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
     // todo: Animate to the next or previous page
     pageController.animateToPage(
       currentPage + direction,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
@@ -131,7 +133,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
             width: width * 1,
             padding: EdgeInsets.symmetric(
                 horizontal: width * .04, vertical: height * .03),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.blackColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(50),
@@ -176,7 +178,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                                 horizontal: width * .04,
                                 vertical: height * .016),
                             backgroundColor: AppColors.blackColor,
-                            side: BorderSide(
+                            side: const BorderSide(
                                 color: AppColors.yellowColor, width: 2),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16))),
@@ -201,7 +203,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: width * .04, vertical: height * .016),
                           backgroundColor: AppColors.yellowColor,
-                          side: BorderSide(
+                          side: const BorderSide(
                               color: AppColors.yellowColor, width: 2),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16))),

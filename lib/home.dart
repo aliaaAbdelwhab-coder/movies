@@ -8,7 +8,7 @@ import 'package:movies/utils/assets_manager.dart';
 
 class Home extends StatefulWidget {
   static String homeRoute = "homeRoute";
-  Home({super.key});
+  const Home({super.key});
   @override
   State<Home> createState() => _HomeState();
 }
@@ -18,9 +18,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     List<Widget> tabs = [
-      HomeTab(),
-      SearchTab(),
-      BrowseTab(),
+      const HomeTab(),
+      const SearchTab(),
+      const BrowseTab(),
       ProfileTab(),
     ];
     return Scaffold(

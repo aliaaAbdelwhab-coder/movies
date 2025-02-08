@@ -70,15 +70,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   context: context,
                   isScrollControlled: true,
                   backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                   ),
                   builder: (context) {
                     return Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: height * 0.6,
                       child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
@@ -101,7 +101,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 ),
                                 color: isSelected ? Colors.yellow : Colors.transparent,
                               ),
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
                                 child: Image.asset(avatars[index]),
@@ -118,7 +118,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             child: Container(
               padding: EdgeInsets.symmetric(vertical: height * 0.06),
 
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 radius: 75,
                 backgroundImage: AssetImage(AssetsManager.profileAvatar),
               ),
@@ -126,24 +126,24 @@ class _UpdateProfileState extends State<UpdateProfile> {
           ),),
           SizedBox(height: height * 0.06),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CustomTextField(
               hintText: "John Safwat",
-              prefixIcon: Icon(Icons.person, color: Colors.white),
+              prefixIcon: const Icon(Icons.person, color: Colors.white),
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CustomTextField(
               hintText: "0120000000",
               keyboard: TextInputType.phone,
-              prefixIcon: Icon(Icons.phone, color: Colors.white),
+              prefixIcon: const Icon(Icons.phone, color: Colors.white),
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           Padding(
-            padding: EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 15),
             child: Text(
               "Reset Password",
               style: AppStyles.regular15WhiteRoboto,
@@ -153,7 +153,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
           SizedBox(height:height*0.15),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 SizedBox(
@@ -166,7 +166,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     onButtonClicked: () {},
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
                   child: CustomElevatedButton(

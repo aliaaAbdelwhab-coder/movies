@@ -8,6 +8,8 @@ import 'package:movies/widget/button%20widget.dart';
 
 class ProfileTab extends StatelessWidget {
   static const String routeName = 'profile_Tab';
+
+  const ProfileTab({super.key});
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.sizeOf(context).height;
@@ -31,7 +33,7 @@ class ProfileTab extends StatelessWidget {
                         children: [
                           Column(
                             children: [
-                              CircleAvatar(
+                              const CircleAvatar(
                                 radius: 50,
                                 backgroundImage:
                                     AssetImage(AssetsManager.profileAvatar),
@@ -58,7 +60,7 @@ class ProfileTab extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Column(
                                 children: [
                                   Text(
@@ -102,7 +104,7 @@ class ProfileTab extends StatelessWidget {
                               backgroundColor: AppColors.redColor,
                               textStyle: AppStyles.regular20WhiteRoboto,
                               borderColor: Colors.transparent,
-                              suffixIcon: Icon(
+                              suffixIcon: const Icon(
                                 Icons.logout,
                                 color: AppColors.whiteColor,
                               ),
@@ -118,7 +120,7 @@ class ProfileTab extends StatelessWidget {
                   children: [
                     Container(
                       color: AppColors.darkGreyColor,
-                      child: TabBar(
+                      child: const TabBar(
                         dividerColor: Colors.transparent,
                         indicatorColor: AppColors.yellowColor,
                         labelColor: AppColors.yellowColor,
@@ -139,7 +141,7 @@ class ProfileTab extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: height * 0.5,
                       child: TabBarView(
                         children: [

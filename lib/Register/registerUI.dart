@@ -13,6 +13,8 @@ import 'package:toggle_switch/toggle_switch.dart';
 class Registerui extends StatefulWidget {
   static String registerRoute = "registerRoute";
 
+  const Registerui({super.key});
+
   @override
   State<Registerui> createState() => _RegisteruiState();
 }
@@ -44,7 +46,7 @@ class _RegisteruiState extends State<Registerui> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Register",
         ),
         centerTitle: true,
@@ -58,7 +60,7 @@ class _RegisteruiState extends State<Registerui> {
                 itemCount: avatarList.length,
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) =>
-                        Container(
+                        SizedBox(
                   width: selectedIndex == itemIndex ? size.width * 0.4 : null,
                   child: Image.asset(
                     fit: selectedIndex == itemIndex ? BoxFit.contain : null,

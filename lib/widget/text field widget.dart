@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   TextEditingController? controller;
 
   CustomTextField(
-      {this.borderColor,
+      {super.key, this.borderColor,
         required this.hintText,
         this.labelText,
         this.hintStyle,
@@ -63,10 +63,10 @@ class CustomTextField extends StatelessWidget {
                   color: borderColor ?? AppColors.darkGreyColor, width: 2)),
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: AppColors.redColor, width: 2)),
+              borderSide: const BorderSide(color: AppColors.redColor, width: 2)),
           focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: AppColors.redColor, width: 2)),
+              borderSide: const BorderSide(color: AppColors.redColor, width: 2)),
         ),
       ),
     );
