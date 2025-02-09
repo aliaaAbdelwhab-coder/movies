@@ -2,7 +2,7 @@ class RegisterModle {
   int? statusCode;
   String? message;
   Data? data;
-
+  
   RegisterModle({this.message, this.data, this.statusCode});
 
   RegisterModle.fromJson(Map<String, dynamic> json) {

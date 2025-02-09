@@ -11,7 +11,7 @@ import 'package:movies/utils/dialogUtils.dart';
 import 'package:movies/widget/LocalizationToggleswitch.dart';
 import 'package:movies/widget/button%20widget.dart';
 import 'package:movies/widget/text%20field%20widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Registerui extends StatefulWidget {
   static String registerRoute = "registerRoute";
 
@@ -53,7 +53,7 @@ class _RegisteruiState extends State<Registerui> {
               title: "Error",
               posActionsName: "OK",
             );
-          print(state.errorMessage);
+          
         }
         if (state is SucsessStates) {
           Dialogutils.hideLoading(context: context);
@@ -70,7 +70,7 @@ class _RegisteruiState extends State<Registerui> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Register",
+          AppLocalizations.of(context)!.register ,
           ),
           centerTitle: true,
         ),
@@ -109,7 +109,7 @@ class _RegisteruiState extends State<Registerui> {
                       child: Column(
                         children: [
                           Text(
-                            "Avatar",
+                            AppLocalizations.of(context)!.avatar,
                             style: AppStyles.regular16WhiteRoboto,
                           ),
                           SizedBox(
@@ -117,7 +117,7 @@ class _RegisteruiState extends State<Registerui> {
                           ),
                           CustomTextField(
                             controller: viewModle.nameController,
-                            hintText: 'Name',
+                            hintText: AppLocalizations.of(context)!.name,
                             prefixIcon: Image.asset(AssetsManager.personIcon),
                             validator: (text) {
                               if (text == null || text.trim().isEmpty) {
@@ -131,7 +131,7 @@ class _RegisteruiState extends State<Registerui> {
                           ),
                           CustomTextField(
                             controller: viewModle.emailController,
-                            hintText: 'Email',
+                            hintText: AppLocalizations.of(context)!.email,
                             prefixIcon: Image.asset(AssetsManager.emailIcon),
                             validator: (text) {
                               if (text == null || text.trim().isEmpty) {
@@ -151,7 +151,7 @@ class _RegisteruiState extends State<Registerui> {
                           ),
                           CustomTextField(
                             controller: viewModle.passController,
-                            hintText: 'Password',
+                            hintText: AppLocalizations.of(context)!.password,
                             prefixIcon: Image.asset(AssetsManager.passwordIcon),
                             suffixIcon: Image.asset(AssetsManager.eyeSlashIcon),
                             validator: (text) {
@@ -169,7 +169,7 @@ class _RegisteruiState extends State<Registerui> {
                           ),
                           CustomTextField(
                             controller: viewModle.rePassController,
-                            hintText: 'Confirm Password',
+                            hintText: AppLocalizations.of(context)!.confirm+AppLocalizations.of(context)!.password,
                             prefixIcon: Image.asset(AssetsManager.passwordIcon),
                             suffixIcon: Image.asset(
                               AssetsManager.eyeSlashIcon,
@@ -192,7 +192,7 @@ class _RegisteruiState extends State<Registerui> {
                           ),
                           CustomTextField(
                             controller: viewModle.phoneController,
-                            hintText: 'Phone number',
+                            hintText: AppLocalizations.of(context)!.phone_number,
                             keyboard: TextInputType.number,
                             prefixIcon: Image.asset(AssetsManager.phoneIcon),
                             validator: (text) {
@@ -209,7 +209,7 @@ class _RegisteruiState extends State<Registerui> {
                             height: size.height * 0.02,
                           ),
                           CustomElevatedButton(
-                            text: 'Create Account',
+                            text:AppLocalizations.of(context)!.create_account,
                             onButtonClicked: () {
                               viewModle.Register(avatarId: selectedIndex);
                             },
@@ -221,7 +221,7 @@ class _RegisteruiState extends State<Registerui> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Already Have Account ?  ",
+                                AppLocalizations.of(context)!.already_have_account+" ? ",
                                 style: AppStyles.regular14WhiteRoboto,
                               ),
                               InkWell(
@@ -230,7 +230,7 @@ class _RegisteruiState extends State<Registerui> {
                                       context, LoginScreen.routeName);
                                 },
                                 child: Text(
-                                  "Login",
+                                  AppLocalizations.of(context)!.login,
                                   style: AppStyles.black14YellowRoboto,
                                 ),
                               )

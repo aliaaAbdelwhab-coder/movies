@@ -39,7 +39,7 @@ class Registerviewmodle extends Cubit<Registerstates> {
             }));
 
         var json = jsonDecode(response.body);
-        print("API Response: ${json["message"]}=============================");
+        
         RegisterModle registerResponse = RegisterModle.fromJson(json);
         if (registerResponse.statusCode != null) {
           emit(ErrorState(errorMessage: registerResponse.message!));

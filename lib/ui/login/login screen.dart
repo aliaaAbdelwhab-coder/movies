@@ -14,7 +14,7 @@ import '../../utils/dialogUtils.dart';
 import '../../widget/button widget.dart';
 import '../../widget/text field widget.dart';
 import 'google sign in api.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
 
@@ -90,7 +90,7 @@ LoginViewModel viewModel=LoginViewModel();
                         return null;
                       },
                       prefixIcon: Image.asset(AssetsManager.emailIcon),
-                      hintText: 'Email'),
+                      hintText: AppLocalizations.of(context)!.email),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -109,7 +109,7 @@ LoginViewModel viewModel=LoginViewModel();
                       obscureText: true,
                       suffixIcon: Image.asset(AssetsManager.eyeSlashIcon),
                       prefixIcon: Image.asset(AssetsManager.passwordIcon),
-                      hintText: 'password'),
+                      hintText: AppLocalizations.of(context)!.password),
                   SizedBox(
                     height: height * 0.01,
                   ),
@@ -120,7 +120,7 @@ LoginViewModel viewModel=LoginViewModel();
                       },
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child: Text('forget_password',
+                        child: Text(AppLocalizations.of(context)!.forget +AppLocalizations.of(context)!.password ,
                             style: AppStyles.regular14YellowRoboto),
                       )),
                   SizedBox(
@@ -129,7 +129,7 @@ LoginViewModel viewModel=LoginViewModel();
                   CustomElevatedButton(onButtonClicked:(){
                     viewModel.login();
                   },
-                      text: 'Login'),
+                      text: AppLocalizations.of(context)!.login ),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -137,10 +137,10 @@ LoginViewModel viewModel=LoginViewModel();
                       textAlign: TextAlign.center,
                       TextSpan(children: [
                         TextSpan(
-                            text: 'Don\'t Have Account? ',
+                            text: AppLocalizations.of(context)!.dont_have_account + ' ? ' ,
                             style: AppStyles.regular14WhiteRoboto),
                         TextSpan(
-                            text: 'create one',
+                            text: AppLocalizations.of(context)!.create_one ,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushNamed(
@@ -182,7 +182,7 @@ LoginViewModel viewModel=LoginViewModel();
                       onButtonClicked: signIn,
                       textStyle: AppStyles.regular16greyRoboto,
                       prefixIcon: Image.asset(AssetsManager.googleIcon),
-                      text: ' Login With Google'),
+                      text: AppLocalizations.of(context)!.login_with_google ),
                   SizedBox(
                     height: height * 0.02,
                   ),
