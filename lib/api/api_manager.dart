@@ -23,6 +23,7 @@ class ApiManager {
     }
   }
 
+
   Future<MovieDetailsResponse?> getMovieDetails(int movieId) async {
 
     Uri url = Uri.https(ApiConstants.baseUrlmoviewDetials, ApiConstants.moviesDetials, {
@@ -41,4 +42,5 @@ class ApiManager {
       throw e.toString();
     }
   }
+
 }

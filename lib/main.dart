@@ -5,13 +5,22 @@ import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
 import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
+
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
+
+import 'package:movies/utils/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'on_boarding_screens/Introduction_screen.dart';
+import 'on_boarding_screens/on_boarding_screen.dart';
+
+
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
 import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
+
 import 'package:movies/utils/app_theme.dart';
 import 'package:movies/widget/my_bloc_observer.dart';
 
@@ -19,22 +28,35 @@ import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 
 
+
+import 'package:movies/widget/my_bloc_observer.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+var initScreen;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+   initScreen = await prefs.getInt("initScreen");
+  await prefs.setInt("initScreen", 1);
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (BuildContext context) => LocalizationBloc(),
       child: BlocBuilder<LocalizationBloc, localizationState>(builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-          initialRoute: Home.homeRoute,
+
+          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: LoginScreen.routeName,
+
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
@@ -54,6 +76,7 @@ class MyApp extends StatelessWidget {
         );
       }
       ),
+
 
     );
   }

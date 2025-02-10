@@ -43,7 +43,7 @@ class _RegisteruiState extends State<Registerui> {
       bloc: viewModle,
       listener: (BuildContext context, state) {
         if (state is LoadingState) {
-          Dialogutils.showLoading(context: context, messsage: "Loading...");
+          Dialogutils.showLoading(context: context, messsage: AppLocalizations.of(context)!.loading);
         }
         if (state is ErrorState) {
           Dialogutils.hideLoading(context: context);
@@ -197,7 +197,7 @@ class _RegisteruiState extends State<Registerui> {
                             prefixIcon: Image.asset(AssetsManager.phoneIcon),
                             validator: (text) {
                               if (text == null || text.trim().isEmpty) {
-                                return "please enter Phone number ";
+                                return "please enter Phone number";
                               }
                               if (text.length != 13) {
                                 return "Phone number should be 11 number";
@@ -221,7 +221,7 @@ class _RegisteruiState extends State<Registerui> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.already_have_account+" ? ",
+                                AppLocalizations.of(context)!.already_have_account,
                                 style: AppStyles.regular14WhiteRoboto,
                               ),
                               InkWell(
