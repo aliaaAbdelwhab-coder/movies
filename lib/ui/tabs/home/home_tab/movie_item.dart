@@ -1,47 +1,53 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/ui/tabs/home/movie_details.dart';
+import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 
-import '../../../models/MovieResponse.dart';
+import '../../../../models/MovieResponse.dart';
 
 class MovieItem extends StatelessWidget {
   List<Movie> movies;
 
-  MovieItem({
-    required this.movies,
-  });
+  MovieItem({required this.movies});
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).pushReplacementNamed(MovieDetails.movieRoute);
-        print('Go To Movie Details');
-      },
-      child: Container(
-        height: height * .65,
-        child: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/images/onBoarding_image6.png',
-              fit: BoxFit.fill,
-            ),
-            Image.asset(
-              'assets/images/home_bg.png',
-              fit: BoxFit.fill,
-            ),
-            CarouselSlider.builder(
-              itemCount: movies.length,
-              itemBuilder: (context, index, realId) {
-                final movie = movies[index];
-                return Container(
+    var args = ModalRoute.of(context)?.settings.arguments as Movie;
+
+    return Container(
+      height: height * .65,
+      child: Stack(
+        alignment: Alignment.center,
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/onBoarding_image6.png',
+            fit: BoxFit.fill,
+          ),
+          Image.asset(
+            'assets/images/home_bg.png',
+            fit: BoxFit.fill,
+          ),
+          CarouselSlider.builder(
+            itemCount: movies.length,
+            itemBuilder: (context, index, realId) {
+              final movie = movies[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MovieDetailsView(
+                                movieId: movies[index].id,
+                                // movieName: movies[index].title,
+                              )));
+                  print('Go To Movie Details');
+                },
+                child: Container(
                   //decoration: BoxDecoration(
                   // image: DecorationImage(image: movie.backgroundImage)),
                   height: height * .4,
@@ -104,19 +110,19 @@ class MovieItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                );
-              },
-              options: CarouselOptions(
-                height: height * .5,
-                viewportFraction: 0.72,
-                aspectRatio: 2,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-              ),
+                ),
+              );
+            },
+            options: CarouselOptions(
+              height: height * .5,
+              viewportFraction: 0.72,
+              aspectRatio: 2,
+              autoPlay: true,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

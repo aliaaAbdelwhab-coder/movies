@@ -1,6 +1,6 @@
 import 'package:movies/models/MovieResponse.dart';
 
-import '../../../../api/api_manager.dart';
+import '../../../../../api/api_manager.dart';
 
 class MovieRepository {
   ApiManager apiManager;

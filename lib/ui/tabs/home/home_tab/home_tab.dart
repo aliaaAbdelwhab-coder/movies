@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/api/api_manager.dart';
-import 'package:movies/ui/tabs/home/cubit/movie_bloc_view_model.dart';
-import 'package:movies/ui/tabs/home/cubit/movie_state.dart';
-import 'package:movies/ui/tabs/home/movie_item.dart';
+import 'package:movies/ui/tabs/home/home_tab/movie_item.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
+
+import 'cubit/movie_bloc_view_model.dart';
+import 'cubit/movie_state.dart';
 
 class HomeTab extends StatefulWidget {
   static const String routeName = 'home_screen';
