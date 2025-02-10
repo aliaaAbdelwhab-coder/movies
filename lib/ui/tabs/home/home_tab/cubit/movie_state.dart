@@ -1,4 +1,4 @@
-import '../../../../models/MovieResponse.dart';
+import '../../../../../models/MovieResponse.dart';
 
 abstract class MovieState {}
 
