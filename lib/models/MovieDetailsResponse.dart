@@ -216,7 +216,7 @@ class Movie {
   String? titleLong;
   String? slug;
   int? year;
-  int? rating;
+  var rating;
   int? runtime;
   List<String>? genres;
   int? likeCount;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
+import 'package:movies/utils/app_styles.dart';
 
 import '../../../../utils/app_colors.dart';
 
@@ -21,13 +22,18 @@ class MovieDetailsView extends StatefulWidget {
 }
 
 class _MovieDetailsViewState extends State<MovieDetailsView> {
-  late MovieDetailsViewModel viewModel;
+  late MovieDetailsViewModel viewModel = MovieDetailsViewModel(movieId: widget.movieId);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    viewModel = MovieDetailsViewModel(movieId: widget.movieId);
+    print("=================================================");
+    print(widget.movieId);
+    print("========================================");
+
+
+
     viewModel.getMovieDetails();
   }
 
@@ -48,7 +54,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
               body: Column(
                 children: [
                   Container(
-                    color: Colors.orange,
+                    color: Colors.amber,
                   ),
                   Stack(
                     children: [
@@ -62,7 +68,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         ),
                       ),
                       CachedNetworkImage(
-                        imageUrl: state.movieDetails.movie!.backgroundImage ??
+                        imageUrl: state.movieDetails.movie!.largeCoverImage ??
                             'No Image Found',
                         fit: BoxFit.fill,
                       ),
@@ -75,15 +81,13 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
             );
             //return MovieDetailsItem();
           } else if (state is MoviesDetailsErrorState) {
-            return Container(
-              color: Colors.red,
+            return
+              Center(
+              child: Text(
+                state.errorMessage,
+                style: AppStyles.regular16WhiteRoboto,
+              ),
             );
-            //   Center(
-            //   child: Text(
-            //     state.errorMessage,
-            //     style: AppStyles.regular16WhiteRoboto,
-            //   ),
-            // );
           }
           return Container();
         });

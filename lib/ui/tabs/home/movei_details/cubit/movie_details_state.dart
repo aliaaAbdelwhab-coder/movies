@@ -2,7 +2,7 @@ import '../../../../../models/MovieDetailsResponse.dart';
 
 abstract class MovieDetailsState {}
 
-class MoviesDetailsInitialState extends MovieDetailsState {}
+// class MoviesDetailsInitialState extends MovieDetailsState {}
 
 class MoviesDetailsLoadingState extends MovieDetailsState {}
 

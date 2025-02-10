@@ -16,7 +16,7 @@ class MovieItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    var args = ModalRoute.of(context)?.settings.arguments as Movie;
+    // var args = ModalRoute.of(context)?.settings.arguments as Movie ?;
 
     return Container(
       height: height * .65,
@@ -38,11 +38,12 @@ class MovieItem extends StatelessWidget {
               final movie = movies[index];
               return InkWell(
                 onTap: () {
+                
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => MovieDetailsView(
-                                movieId: movies[index].id,
+                                movieId: movies[index].id
                                 // movieName: movies[index].title,
                               )));
                   print('Go To Movie Details');
