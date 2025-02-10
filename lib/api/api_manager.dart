@@ -21,4 +21,5 @@ class ApiManager {
       throw e.toString();
     }
   }
+
 }
