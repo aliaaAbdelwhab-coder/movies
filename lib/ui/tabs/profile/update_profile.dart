@@ -82,7 +82,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             //     ),
             //     CustomElevatedButton(
             //         text: "Delete Account",
-            //         backgroundColor: Colors.red,
+            //         backgroundColor: Colors.red, 
             //         onButtonClicked: () {
             //           viewModel.deleteAccount();
             //         }),
@@ -204,7 +204,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         backgroundColor: Colors.red,
                         borderColor: Colors.red,
                         textStyle: AppStyles.regular20WhiteRoboto,
-                        onButtonClicked: () {},
+                        onButtonClicked: () {
+                           viewModel.deleteAccount();
+                        },
                       ),
                     ),
                     SizedBox(height: height * 0.015),
@@ -214,7 +216,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         text:AppLocalizations.of(context)!.update_data,
                         backgroundColor: Colors.amber,
                         borderColor: Colors.yellow,
-                        onButtonClicked: () {},
+                        onButtonClicked: () {
+                      viewModel.updateProfile(1);
+                        },
                       ),
                     ),
                   ],

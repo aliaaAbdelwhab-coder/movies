@@ -1,18 +1,18 @@
 //https://yts.am/api/v2/list_movies.json
 // https://yts.am/api/v2/list_movies.jsonp
 // https://yts.am/api/v2/list_movies.xml
-
+import '../../../api/apiConstatnts.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:movies/api/api_constants.dart';
 import 'package:movies/models/MovieDetailsResponse.dart';
-
 import '../models/MovieResponse.dart';
 
 class ApiManager {
   Future<MovieResponse?> getMovies() async {
-    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.moviesEndPoint);
+    Uri url = Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.moviesEndPoint ,{
+      'sort_by' : 'year'
+    });
     try {
       var response = await http.get(url);
 
@@ -26,7 +26,7 @@ class ApiManager {
 
   Future<MovieDetailsResponse?> getMovieDetails(int movieId) async {
 
-    Uri url = Uri.https(ApiConstants.baseUrlmoviewDetials, ApiConstants.moviesDetials, {
+    Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials, Apiconstatnts.moviesDetials, {
       'movie_id':'$movieId' ,
     });
     try {
