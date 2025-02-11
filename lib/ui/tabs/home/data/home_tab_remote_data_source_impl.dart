@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
+import 'package:movies/api/apiConstatnts.dart';
 
-import '../../../../api/api_constants.dart';
+
 import '../../../../models/MovieResponse.dart';
 import 'home_tab_remote_data_source.dart';
 
@@ -12,7 +13,7 @@ class HomeScreenRemoteDataSourceImpl implements HomeTabRemoteDataSource {
   @override
   Future<MovieResponse?> getMovies() async {
     Uri url = Uri.https(
-      ApiConstants.baseUrl,
+      Apiconstatnts.baseUrl,
     );
     try {
       var response = await http.get(url);

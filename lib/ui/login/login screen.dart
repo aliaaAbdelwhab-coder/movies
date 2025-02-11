@@ -137,7 +137,7 @@ LoginViewModel viewModel=LoginViewModel();
                       textAlign: TextAlign.center,
                       TextSpan(children: [
                         TextSpan(
-                            text: AppLocalizations.of(context)!.dont_have_account + ' ? ' ,
+                            text: AppLocalizations.of(context)!.dont_have_account,
                             style: AppStyles.regular14WhiteRoboto),
                         TextSpan(
                             text: AppLocalizations.of(context)!.create_one ,
@@ -162,7 +162,7 @@ LoginViewModel viewModel=LoginViewModel();
                         ),
                       ),
                       Text(
-                        'OR',
+                        AppLocalizations.of(context)!.or,
                         style: AppStyles.regular15YellowRoboto,
                       ),
                       Expanded(

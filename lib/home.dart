@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
-import 'package:movies/ui/tabs/home/home_tab.dart';
+import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
 import 'package:movies/utils/app_colors.dart';
