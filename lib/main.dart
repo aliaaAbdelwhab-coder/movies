@@ -1,3 +1,5 @@
+import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +11,7 @@ import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 
 import 'package:movies/utils/app_theme.dart';
+import 'package:movies/utils/assets_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
@@ -68,7 +71,7 @@ class MyApp extends StatelessWidget {
             ProfileTab.routeName: (context) => ProfileTab(),
             SearchTab.routeName: (context) => SearchTab(),
             BrowseTab.routeName: (context) => BrowseTab(),
-            UpdateProfile.routeName: (context) => UpdateProfile(),
+           UpdateProfile.routeName: (context) => UpdateProfile(),
           },
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
