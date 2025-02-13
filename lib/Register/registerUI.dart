@@ -12,6 +12,8 @@ import 'package:movies/widget/LocalizationToggleswitch.dart';
 import 'package:movies/widget/button%20widget.dart';
 import 'package:movies/widget/text%20field%20widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../utils/app_colors.dart';
 class Registerui extends StatefulWidget {
   static String registerRoute = "registerRoute";
 
@@ -20,6 +22,9 @@ class Registerui extends StatefulWidget {
 }
 
 class _RegisteruiState extends State<Registerui> {
+  bool isObscured1= true;
+  bool isObscured2= true;
+
   List<String> avatarList = [
     AssetsManager.Avatara0,
     AssetsManager.Avatar1,
@@ -150,10 +155,22 @@ class _RegisteruiState extends State<Registerui> {
                             height: size.height * 0.02,
                           ),
                           CustomTextField(
+                            obscureText: isObscured1,
                             controller: viewModle.passController,
                             hintText: AppLocalizations.of(context)!.password,
                             prefixIcon: Image.asset(AssetsManager.passwordIcon),
-                            suffixIcon: Image.asset(AssetsManager.eyeSlashIcon),
+                            suffixIcon: IconButton(
+                            onPressed:(){
+                              isObscured1=! isObscured1;
+                              setState(() {
+
+                              });
+                            },
+                            icon:  Icon(
+                              isObscured1 ? Icons.visibility_off : Icons.visibility,
+                              color: AppColors.whiteColor,
+                            ),
+                          ),
                             validator: (text) {
                               if (text == null || text.trim().isEmpty) {
                                 return "please enter Password ";
@@ -168,11 +185,21 @@ class _RegisteruiState extends State<Registerui> {
                             height: size.height * 0.02,
                           ),
                           CustomTextField(
+                            obscureText: isObscured2,
                             controller: viewModle.rePassController,
                             hintText: AppLocalizations.of(context)!.confirm+AppLocalizations.of(context)!.password,
                             prefixIcon: Image.asset(AssetsManager.passwordIcon),
-                            suffixIcon: Image.asset(
-                              AssetsManager.eyeSlashIcon,
+                            suffixIcon: IconButton(
+                              onPressed:(){
+                                isObscured2=! isObscured2;
+                                setState(() {
+
+                                });
+                              },
+                              icon:  Icon(
+                                isObscured2 ? Icons.visibility_off : Icons.visibility,
+                                color: AppColors.whiteColor,
+                              ),
                             ),
                             validator: (text) {
                               if (text == null || text.trim().isEmpty) {

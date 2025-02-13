@@ -25,7 +25,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 LoginViewModel viewModel=LoginViewModel();
 
-
+bool isObscured= true;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,6 @@ LoginViewModel viewModel=LoginViewModel();
                   ),
                   CustomTextField(
                     controller: viewModel.passwordController,
-                      keyboard: TextInputType.number,
                       validator: (text) {
                         if (text == null || text.trim().isEmpty) {
                           return 'please enter your password';
@@ -106,8 +105,21 @@ LoginViewModel viewModel=LoginViewModel();
                         }
                         return null;
                       },
-                      obscureText: true,
-                      suffixIcon: Image.asset(AssetsManager.eyeSlashIcon),
+                      obscureText: isObscured,
+
+                      suffixIcon:  IconButton(
+                          onPressed:(){
+                            isObscured=! isObscured;
+                            setState(() {
+
+                            });
+                          },
+                          icon:  Icon(
+                            isObscured ? Icons.visibility_off : Icons.visibility,
+                            color: AppColors.whiteColor,
+                          ),
+                      ),
+
                       prefixIcon: Image.asset(AssetsManager.passwordIcon),
                       hintText: AppLocalizations.of(context)!.password),
                   SizedBox(
@@ -120,7 +132,7 @@ LoginViewModel viewModel=LoginViewModel();
                       },
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child: Text(AppLocalizations.of(context)!.forget +AppLocalizations.of(context)!.password ,
+                        child: Text(AppLocalizations.of(context)!.forget +' '+ AppLocalizations.of(context)!.password +'?',
                             style: AppStyles.regular14YellowRoboto),
                       )),
                   SizedBox(

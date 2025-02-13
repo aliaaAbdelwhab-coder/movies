@@ -28,11 +28,13 @@ class ApiManager {
 
     Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials, Apiconstatnts.moviesDetials, {
       'movie_id':'$movieId' ,
+      "with_cast": 'true'
     });
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return MovieDetailsResponse.fromJson(jsonDecode(response.body));
+
       } else {
         print('Failed to load movie details');
         // return null;
@@ -42,5 +44,8 @@ class ApiManager {
       throw e.toString();
     }
   }
+
+
+
 
 }
