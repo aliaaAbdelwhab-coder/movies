@@ -21,7 +21,7 @@ class UpdateProfile extends StatefulWidget {
 
 class _UpdateProfileState extends State<UpdateProfile> {
   UpdateProfileRepository updateProfileRepository = UpdateProfileRepository();
-  String selectedAvatar = AssetsManager.profileAvatar; // الصورة الأساسية
+  String selectedAvatar = AssetsManager.profileAvatar; 
   UpdateProfileBloc viewModel = UpdateProfileBloc();
   List<String> avatarList = [
     AssetsManager.Avatara0,
@@ -34,7 +34,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     AssetsManager.Avatar7,
     AssetsManager.Avatar8
   ];
-  int selectedAvatarIndex = 0; // الفهرس الحالي للصورة المختارة
+  int selectedAvatarIndex = 0; 
 
   @override
   Widget build(BuildContext context) {
@@ -67,17 +67,17 @@ class _UpdateProfileState extends State<UpdateProfile> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    _showAvatarPicker(context); // فتح البوتوم شيت
+                    _showAvatarPicker(context); 
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: height * 0.06),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.yellow.withOpacity(0.3), // الخلفية الصفراء حول الصورة المختارة
+                      color: Colors.yellow.withOpacity(0.3), 
                     ),
                     child: CircleAvatar(
                       radius: 75,
-                      backgroundImage: AssetImage(selectedAvatar), // تحديث الصورة المختارة
+                      backgroundImage: AssetImage(selectedAvatar), 
                     ),
                   ),
                 ),
@@ -151,7 +151,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
   }
 
-  // دالة فتح البوتوم شيت لاختيار الصورة
+
   void _showAvatarPicker(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -177,20 +177,20 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 ),
                 itemCount: avatarList.length,
                 itemBuilder: (context, index) {
-                  bool isSelected = selectedAvatarIndex == index; // هل الصورة مختارة؟
+                  bool isSelected = selectedAvatarIndex == index; 
 
                   return GestureDetector(
                     onTap: () {
                       setState(() {
                         selectedAvatarIndex = index;
-                        selectedAvatar = avatarList[index]; // تحديث الصورة المختارة
+                        selectedAvatar = avatarList[index]; 
                       });
-                      setStateBottomSheet(() {}); // تحديث الـ BottomSheet فقط
+                      setStateBottomSheet(() {}); 
                     },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: isSelected ? Colors.yellow.withOpacity(0.6) : Colors.transparent, // لون الخلفية
+                        color: isSelected ? Colors.yellow.withOpacity(0.6) : Colors.transparent, 
                       ),
                       padding: EdgeInsets.all(width * 0.02),
                       child: ClipRRect(
