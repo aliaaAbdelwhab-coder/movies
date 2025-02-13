@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
 import 'package:movies/utils/app_styles.dart';
@@ -39,6 +40,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return BlocBuilder<MovieDetailsViewModel, MovieDetailsState>(
         bloc: viewModel,
         builder: (context, state) {
@@ -51,13 +53,21 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
           } else if (state is MoviesDetailsSuccessState) {
             //final movie = state.movieDetails.movie;
             return Scaffold(
-              body: Column(
-                children: [
-                  Container(
-                    color: Colors.amber,
+              body:CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Container(
+                      color: Colors.amber,
+                    ),
                   ),
-                  Stack(
-                    children: [
+                  SliverToBoxAdapter(
+                    child:  Stack(
+                      children: [
+                    CachedNetworkImage(
+                    imageUrl: state.movieDetails.movie!.largeCoverImage ??
+                      'No Image Found',
+                      fit: BoxFit.fill,
+                    ),
                       Positioned(
                         top: 6,
                         right: 7,
@@ -67,17 +77,43 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                           color: AppColors.whiteColor,
                         ),
                       ),
-                      CachedNetworkImage(
-                        imageUrl: state.movieDetails.movie!.largeCoverImage ??
-                            'No Image Found',
-                        fit: BoxFit.fill,
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              state.movieDetails.movie!.title ?? '',
+                              style: TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            Text(
+                              state.movieDetails.movie!.year.toString() ?? '',
+                              style: TextStyle(color: Colors.white70, fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(state.movieDetails.movie!.title ?? ''),
-                      Text(state.movieDetails.movie?.year.toString() ?? ''),
-                    ],
+                      ],
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                   padding: EdgeInsets.only(left: 12, bottom: 0),
+                      child: Text('Cast',style: AppStyles.bold24WhiteInter,),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child:Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: CastWidget(
+                          castList: state.movieDetails.movie!.cast
+                      ),
+                    ) ,
                   )
                 ],
               ),
+
             );
             //return MovieDetailsItem();
           } else if (state is MoviesDetailsErrorState) {

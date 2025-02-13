@@ -1,46 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
-import 'package:movies/localization/localizationSatates.dart';
-import 'package:movies/localization/localization_bloc.dart';
+import 'package:movies/models/MovieDetailsResponse.dart';
 
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 
+import 'package:movies/localization/localizationSatates.dart';
+import 'package:movies/localization/localization_bloc.dart';
+import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
+import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
-
 
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
-import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
+
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
-
 import 'package:movies/utils/app_theme.dart';
+
 import 'package:movies/widget/my_bloc_observer.dart';
 
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 
-
-
-import 'package:movies/widget/my_bloc_observer.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-var initScreen;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-   initScreen = await prefs.getInt("initScreen");
-  await prefs.setInt("initScreen", 1);
   runApp(MyApp());
 }
 
@@ -54,9 +46,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-
-          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: LoginScreen.routeName,
-
+          initialRoute: Home.homeRoute,
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
@@ -65,6 +55,7 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName: (context) => LoginScreen(),
             ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
             HomeTab.routeName: (context) => HomeTab(),
+           // MovieDetailsView.movieRoute: (context) => MovieDetailsView(movieId: movieId),
             ProfileTab.routeName: (context) => ProfileTab(),
             SearchTab.routeName: (context) => SearchTab(),
             BrowseTab.routeName: (context) => BrowseTab(),

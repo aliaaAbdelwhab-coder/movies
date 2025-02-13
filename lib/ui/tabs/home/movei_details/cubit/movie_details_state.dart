@@ -15,5 +15,7 @@ class MoviesDetailsErrorState extends MovieDetailsState {
 class MoviesDetailsSuccessState extends MovieDetailsState {
   MovieDetails movieDetails;
 
-  MoviesDetailsSuccessState({required this.movieDetails});
+  MoviesDetailsSuccessState({required this.movieDetails,
+
+  });
 }
