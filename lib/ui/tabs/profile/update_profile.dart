@@ -10,6 +10,7 @@ import 'package:movies/widget/button%20widget.dart';
 import 'package:movies/widget/text%20field%20widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
+
 class UpdateProfile extends StatefulWidget {
   static const String routeName = "update-profile";
   const UpdateProfile({super.key});
@@ -20,7 +21,7 @@ class UpdateProfile extends StatefulWidget {
 
 class _UpdateProfileState extends State<UpdateProfile> {
   UpdateProfileRepository updateProfileRepository = UpdateProfileRepository();
-  String selectedAvatar = AssetsManager.profileAvatar;
+  String selectedAvatar = AssetsManager.profileAvatar; 
   UpdateProfileBloc viewModel = UpdateProfileBloc();
   List<String> avatarList = [
     AssetsManager.Avatara0,
@@ -33,7 +34,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     AssetsManager.Avatar7,
     AssetsManager.Avatar8
   ];
-  int selectedAvatarIndex = 0;
+  int selectedAvatarIndex = 0; 
 
   @override
   Widget build(BuildContext context) {
@@ -59,105 +60,24 @@ class _UpdateProfileState extends State<UpdateProfile> {
           title: Text(AppLocalizations.of(context)!.pick_avatar, style: AppStyles.regular16YellowRoboto),
           centerTitle: true,
         ),
-        body:
-            // Column(
-            //   children: [
-            //     GestureDetector(
-            //       onTap: () => _pickAvatar(context),
-            //       child: CircleAvatar(
-            //           radius: 75, backgroundImage: AssetImage(selectedAvatar)),
-            //     ),
-            //     Padding(
-            //       padding: EdgeInsets.all(10),
-            //       child: CustomTextField(
-            //           controller: viewModel.nameController,
-            //           hintText: "John Safwat"),
-            //     ),
-            //     Padding(
-            //       padding: EdgeInsets.all(10),
-            //       child: CustomTextField(
-            //           controller: viewModel.phoneController,
-            //           hintText: "0120000000",
-            //           keyboard: TextInputType.phone),
-            //     ),
-            //     CustomElevatedButton(
-            //         text: "Delete Account",
-            //         backgroundColor: Colors.red, 
-            //         onButtonClicked: () {
-            //           viewModel.deleteAccount();
-            //         }),
-            //     CustomElevatedButton(
-            //         text: "Update Data",
-            //         backgroundColor: Colors.amber,
-            //         onButtonClicked: () {
-            //           viewModel.updateProfile(1);
-            //         }),
-            //   ],
-            // ),
-            SingleChildScrollView(
-              child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(20)),
-                      ),
-                      builder: (context) {
-                        return Container(
-                          padding: EdgeInsets.all(10),
-                          height: height * 0.6,
-                          child: GridView.builder(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                            ),
-                            itemCount: avatarList.length,
-                            itemBuilder: (context, index) {
-                              bool isSelected = selectedAvatarIndex == index;
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    selectedAvatarIndex = index;
-                                  });
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                      color: Colors.yellow,
-                                      width: 3,
-                                    ),
-                                    color: isSelected
-                                        ? Colors.yellow
-                                        : Colors.transparent,
-                                  ),
-                                  padding: EdgeInsets.all(width * 0.02),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(50),
-                                    child: Image.asset(avatarList[index]),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    );
+                    _showAvatarPicker(context); 
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: height * 0.06),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.yellow.withOpacity(0.3), 
+                    ),
                     child: CircleAvatar(
                       radius: 75,
-                      backgroundImage: AssetImage(AssetsManager.profileAvatar),
+                      backgroundImage: AssetImage(selectedAvatar), 
                     ),
                   ),
                 ),
@@ -205,7 +125,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         borderColor: Colors.red,
                         textStyle: AppStyles.regular20WhiteRoboto,
                         onButtonClicked: () {
-                           viewModel.deleteAccount();
+                          viewModel.deleteAccount();
                         },
                       ),
                     ),
@@ -213,23 +133,79 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     SizedBox(
                       width: double.infinity,
                       child: CustomElevatedButton(
-                        text:AppLocalizations.of(context)!.update_data,
+                        text: AppLocalizations.of(context)!.update_data,
                         backgroundColor: Colors.amber,
                         borderColor: Colors.yellow,
                         onButtonClicked: () {
-                      viewModel.updateProfile(1);
+                          viewModel.updateProfile(1);
                         },
                       ),
                     ),
                   ],
                 ),
               ),
-                        ],
-                      ),
-            ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  void _pickAvatar(BuildContext context) {}
+
+  void _showAvatarPicker(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setStateBottomSheet) {
+            return Container(
+              padding: EdgeInsets.all(10),
+              height: height * 0.6,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: avatarList.length,
+                itemBuilder: (context, index) {
+                  bool isSelected = selectedAvatarIndex == index; 
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedAvatarIndex = index;
+                        selectedAvatar = avatarList[index]; 
+                      });
+                      setStateBottomSheet(() {}); 
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: isSelected ? Colors.yellow.withOpacity(0.6) : Colors.transparent, 
+                      ),
+                      padding: EdgeInsets.all(width * 0.02),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset(avatarList[index]),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 }
+

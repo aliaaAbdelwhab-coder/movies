@@ -35,7 +35,7 @@ class _HomeTabState extends State<HomeTab> {
           builder: (context, state) {
             if (state is MoviesLoadingState) {
               return Center(
-            child: CircularProgressIndicator(
+            child: const CircularProgressIndicator(
               color: AppColors.darkGreyColor,
             ),
           );

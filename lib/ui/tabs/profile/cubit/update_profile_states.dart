@@ -2,6 +2,7 @@ import 'package:movies/ui/tabs/profile/update_profile_model.dart';
 
 abstract class UpdateProfileState {}
 
+
 class UpdateProfileInitialState extends UpdateProfileState {}
 
 class UpdateProfileLoadingState extends UpdateProfileState {}
