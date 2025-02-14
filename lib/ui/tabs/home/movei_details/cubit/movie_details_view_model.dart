@@ -17,26 +17,19 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsState> {
       emit(MoviesDetailsLoadingState());
       var response = await apiManager.getMovieDetails(movieId);
 
-
-
-
-        if ( response!.status == 'ok') {
-
-          emit(MoviesDetailsSuccessState(movieDetails:response.data!,
-
-          ));
+      if (response!.status == 'ok') {
+        emit(MoviesDetailsSuccessState(
+          movieDetails: response.data!,
+        ));
         print('Loading movies Success');
       } else {
         emit(MoviesDetailsErrorState(errorMessage: response.statusMessage!));
         print('Failed to load movies');
       }
-     } catch (e) {
+    } catch (e) {
       // print('no internet');
       emit(MoviesDetailsErrorState(errorMessage: e.toString()));
       print(e);
     }
   }
-
-
-
 }

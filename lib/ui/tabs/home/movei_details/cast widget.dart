@@ -18,6 +18,7 @@ class CastWidget extends StatelessWidget {
             child: Text("No cast available",
                 style: TextStyle(color: Colors.white)))
         : ListView.builder(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: castList!.length,

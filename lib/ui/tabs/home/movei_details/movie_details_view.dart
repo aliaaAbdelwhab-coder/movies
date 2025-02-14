@@ -25,7 +25,8 @@ class MovieDetailsView extends StatefulWidget {
 }
 
 class _MovieDetailsViewState extends State<MovieDetailsView> {
-  late MovieDetailsViewModel viewModel = MovieDetailsViewModel(movieId: widget.movieId);
+  late MovieDetailsViewModel viewModel =
+      MovieDetailsViewModel(movieId: widget.movieId);
 
   @override
   void initState() {
@@ -34,8 +35,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
     print("=================================================");
     print(widget.movieId);
     print("========================================");
-
-
 
     viewModel.getMovieDetails();
   }
@@ -56,48 +55,78 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
           } else if (state is MoviesDetailsSuccessState) {
             //final movie = state.movieDetails.movie;
             return Scaffold(
-              body:CustomScrollView(
+              body: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: MovieDetailsItem(movieDetails: state.movieDetails),
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                   padding: EdgeInsets.only(left: 12, bottom: 0),
-                      child: Text('Cast',style: AppStyles.bold24WhiteInter,),
+                      padding: EdgeInsets.only(left: width * 0.03),
+                      child: Text(
+                        AppLocalizations.of(context)!.summary,
+                        style: AppStyles.bold24WhiteInter,
+                      ),
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child:Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: CastWidget(
-                          castList: state.movieDetails.movie!.cast
-                      ),
-                    ) ,
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: width * 0.03, vertical: height * 0.02),
+                        child: Text(
+                          state.movieDetails.movie!.descriptionFull!.isEmpty ||
+                                  state.movieDetails.movie!.descriptionFull ==
+                                      null
+                              ? AppLocalizations.of(context)!.na
+                              : state.movieDetails.movie!.descriptionFull!,
+                          style: AppStyles.regular20WhiteRoboto,
+                        )),
                   ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width*0.03 ),
-                    
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.genres , style: AppStyles.bold24WhiteRoboto,),
-                        SizedBox(height: height*0.01,),
-                        Moviedetailsgenres(genres:state.movieDetails.movie!.genres!),
-                          SizedBox(height: height*0.03,),
-                      ],
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+                      child: Text(
+                        'Cast',
+                        style: AppStyles.bold24WhiteInter,
+                      ),
                     ),
-                  ) ,
-                )  
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: width * 0.03, vertical: height * 0.01),
+                      child:
+                          CastWidget(castList: state.movieDetails.movie!.cast),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.genres,
+                            style: AppStyles.bold24WhiteRoboto,
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Moviedetailsgenres(
+                              genres: state.movieDetails.movie!.genres!),
+                          SizedBox(
+                            height: height * 0.03,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
-
             );
             //return MovieDetailsItem();
           } else if (state is MoviesDetailsErrorState) {
-            return
-              Center(
+            return Center(
               child: Text(
                 state.errorMessage,
                 style: AppStyles.regular16WhiteRoboto,
