@@ -42,4 +42,10 @@ class AssetsManager {
   static const String Avatar7 = 'assets/images/Avatar7.png';
   static const String Avatar8 = 'assets/images/Avatar8.png';
   static const String Avatara0 = 'assets/images/Avatar0.png';  
+  static const String watchIcon = 'assets/images/watchIcon.png';  
+  static const String timeIcon = 'assets/images/timeIcon.png';  
+  static const String favoriteIcon = 'assets/images/favoriteIcon.png';  
+  static const String starIocn = 'assets/images/starIcon.png'; 
+  static const String saveIcon = 'assets/images/saveIcon.png';  
+
 }

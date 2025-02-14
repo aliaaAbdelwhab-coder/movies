@@ -5,14 +5,13 @@ import 'package:movies/home.dart';
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
+import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/utils/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
-import 'package:movies/ui/tabs/home/home_tab.dart';
-import 'package:movies/ui/tabs/home/movie_details.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
@@ -48,7 +47,6 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName: (context) => LoginScreen(),
             ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
             HomeTab.routeName: (context) => HomeTab(),
-            MovieDetails.movieRoute: (context) => MovieDetails(),
             ProfileTab.routeName: (context) => ProfileTab(),
             SearchTab.routeName: (context) => SearchTab(),
             BrowseTab.routeName: (context) => BrowseTab(),

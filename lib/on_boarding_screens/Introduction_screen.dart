@@ -21,7 +21,7 @@ class IntroductionScreen extends StatelessWidget {
         width: double.infinity,
         fit: BoxFit.cover,
       ),
-      Spacer(),
+      // Spacer(),
       Positioned(
         bottom: height * .206,
         // left: width*.032,
@@ -47,7 +47,7 @@ class IntroductionScreen extends StatelessWidget {
           style: AppStyles.regular20WhiteInter,
         ),
       ),
-      Spacer(),
+      // Spacer(),
       Positioned(
         width: width * .9,
         bottom: height * .015,
