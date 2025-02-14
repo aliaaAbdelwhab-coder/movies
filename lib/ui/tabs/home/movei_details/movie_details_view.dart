@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
+import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
 import 'package:movies/utils/app_styles.dart';
 
 import '../../../../utils/app_colors.dart';
@@ -56,46 +57,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
               body:CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: Container(
-                      color: Colors.amber,
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child:  Stack(
-                      children: [
-                    CachedNetworkImage(
-                    imageUrl: state.movieDetails.movie!.largeCoverImage ??
-                      'No Image Found',
-                      fit: BoxFit.fill,
-                    ),
-                      Positioned(
-                        top: 6,
-                        right: 7,
-                        child: Icon(
-                          Icons.bookmark,
-                          size: 25,
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 10,
-                        left: 10,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              state.movieDetails.movie!.title ?? '',
-                              style: TextStyle(color: Colors.white, fontSize: 18),
-                            ),
-                            Text(
-                              state.movieDetails.movie!.year.toString() ?? '',
-                              style: TextStyle(color: Colors.white70, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                      ],
-                    ),
+                    child: MovieDetailsItem(movieDetails: state.movieDetails),
                   ),
                   SliverToBoxAdapter(
                     child: Padding(

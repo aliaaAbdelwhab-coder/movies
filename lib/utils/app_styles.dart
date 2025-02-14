@@ -47,4 +47,6 @@ class AppStyles {
       fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.yellowColor);
   static TextStyle bold20YellowRoboto = GoogleFonts.roboto(
       fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.yellowColor);
+  static TextStyle bold20GreyRoboto = GoogleFonts.roboto(
+      fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.gryColor);      
 }

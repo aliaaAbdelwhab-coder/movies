@@ -2,31 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
-import 'package:movies/models/MovieDetailsResponse.dart';
-
 import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
-
 import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
-import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_theme.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
-
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
-
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
-import 'package:movies/utils/app_theme.dart';
-
 import 'package:movies/widget/my_bloc_observer.dart';
-
-import 'on_boarding_screens/Introduction_screen.dart';
-import 'on_boarding_screens/on_boarding_screen.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
