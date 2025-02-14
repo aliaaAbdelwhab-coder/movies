@@ -20,6 +20,7 @@ class Registerviewmodle extends Cubit<Registerstates> {
       TextEditingController(text: "+201123456789");
 
   var formKey = GlobalKey<FormState>();
+    int  selectedIndex  =0;
   void Register({required int avatarId}) async {
     if (formKey.currentState?.validate() == true) {
       emit(LoadingState());
@@ -44,6 +45,7 @@ class Registerviewmodle extends Cubit<Registerstates> {
         if (registerResponse.statusCode != null) {
           emit(ErrorState(errorMessage: registerResponse.message!));
         } else {
+          
           emit(SucsessStates(
               sucsessMessage: registerResponse.message!,
               data: registerResponse.data!));

@@ -1,5 +1,3 @@
-import 'dart:ui_web';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/Register/registerUI.dart';
@@ -9,10 +7,6 @@ import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/utils/app_theme.dart';
-
-import 'package:movies/utils/assets_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
@@ -40,7 +34,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-          initialRoute: Home.homeRoute,
+          initialRoute: IntroductionScreen.routeName,
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),

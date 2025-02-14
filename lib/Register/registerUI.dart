@@ -38,7 +38,7 @@ class _RegisteruiState extends State<Registerui> {
   ];
   Registerviewmodle viewModle = Registerviewmodle();
 
-  int selectedIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class _RegisteruiState extends State<Registerui> {
               message: state.sucsessMessage,
               title: "Sucsess",
               posActionsName: "OK",
-              posAcitons: (){Navigator.pushReplacementNamed(context, Home.homeRoute);}
+              posAcitons: (){Navigator.pushReplacementNamed(context,LoginScreen.routeName);}
             );
           
         }
@@ -89,15 +89,15 @@ class _RegisteruiState extends State<Registerui> {
                   itemBuilder: (BuildContext context, int itemIndex,
                           int pageViewIndex) =>
                       Container(
-                    width: selectedIndex == itemIndex ? size.width * 0.4 : null,
+                    width:viewModle.selectedIndex == itemIndex ? size.width * 0.4 : null,
                     child: Image.asset(
-                      fit: selectedIndex == itemIndex ? BoxFit.contain : null,
+                      fit:viewModle. selectedIndex == itemIndex ? BoxFit.contain : null,
                       avatarList[itemIndex],
                     ),
                   ),
                   options: CarouselOptions(
                     onPageChanged: (index, CarouselPageChangedReason) {
-                      selectedIndex = index;
+                    viewModle.selectedIndex = index;
                       setState(() {});
                     },
                     aspectRatio: 16 / 8,
@@ -238,7 +238,7 @@ class _RegisteruiState extends State<Registerui> {
                           CustomElevatedButton(
                             text:AppLocalizations.of(context)!.create_account,
                             onButtonClicked: () {
-                              viewModle.Register(avatarId: selectedIndex);
+                              viewModle.Register(avatarId:viewModle.selectedIndex );
                             },
                           ),
                           SizedBox(
