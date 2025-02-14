@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
+import 'package:movies/ui/tabs/home/movei_details/movieDetailsGenres.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
 import 'package:movies/utils/app_styles.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../utils/app_colors.dart';
 
 class MovieDetailsView extends StatefulWidget {
@@ -42,6 +43,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return BlocBuilder<MovieDetailsViewModel, MovieDetailsState>(
         bloc: viewModel,
         builder: (context, state) {
@@ -72,7 +74,22 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                           castList: state.movieDetails.movie!.cast
                       ),
                     ) ,
-                  )
+                  ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width*0.03 ),
+                    
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(AppLocalizations.of(context)!.genres , style: AppStyles.bold24WhiteRoboto,),
+                        SizedBox(height: height*0.01,),
+                        Moviedetailsgenres(genres:state.movieDetails.movie!.genres!),
+                          SizedBox(height: height*0.03,),
+                      ],
+                    ),
+                  ) ,
+                )  
                 ],
               ),
 
