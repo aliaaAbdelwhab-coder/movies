@@ -44,7 +44,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return BlocBuilder<MovieDetailsViewModel, MovieDetailsState>(
         bloc: viewModel,
@@ -65,32 +65,39 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                     SliverToBoxAdapter(
                       child: MovieDetailsItem(movieDetails: state.movieDetails),
                     ),
-                                        SliverToBoxAdapter(
-                     child: Padding(
-                     padding: EdgeInsets.only(left: 12, bottom: 0),
-                      child: Text('Screenshots', style: AppStyles.bold24WhiteInter),
-  ),
-),
-                SliverToBoxAdapter(
-                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                     child: ScreenShotsWidget(
-                     image1:state.movieDetails.movie!.mediumScreenshotImage1 ?? '' , 
-                     image2:state.movieDetails.movie!.mediumScreenshotImage2 ?? '' ,
-                     image3:state.movieDetails.movie!.mediumScreenshotImage3 ?? ''), 
-  ),
-),
-                    
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding:  EdgeInsets.symmetric(vertical:height*0.02 ),
+                        child: Text('Screenshots',
+                            style: AppStyles.bold24WhiteInter),
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: ScreenShotsWidget(
+                          image1: state.movieDetails.movie!
+                                  .mediumScreenshotImage1 ??
+                              '',
+                          image2: state.movieDetails.movie!
+                                  .mediumScreenshotImage2 ??
+                              '',
+                          image3: state.movieDetails.movie!
+                                  .mediumScreenshotImage3 ??
+                              ''),
+                    ),
                     SliverToBoxAdapter(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height:height*0.02,),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
                           Text(
                             AppLocalizations.of(context)!.similar,
                             style: AppStyles.bold24WhiteRoboto,
                           ),
-                          SizedBox(height:height*0.02,),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
                         ],
                       ),
                     ),
@@ -104,7 +111,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         AppLocalizations.of(context)!.summary,
                         style: AppStyles.bold24WhiteInter,
                       ),
-
                     ),
                     SliverToBoxAdapter(
                       child: Text(
