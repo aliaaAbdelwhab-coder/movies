@@ -28,9 +28,6 @@ class ScreenShotsWidget extends StatelessWidget {
   }
 
   Widget _buildImageContainer(String imageUrl) {
-    if (imageUrl.isEmpty ) {
-      return SizedBox(); 
-    }
 
     return Container(
       width: double.infinity,
