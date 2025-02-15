@@ -43,7 +43,7 @@ class MovieItem extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => MovieDetailsView(
-                                movieId: movies[index].id
+                                movieId: movies[index].id!
                                 // movieName: movies[index].title,
                               )));
                   print('Go To Movie Details');
@@ -104,7 +104,7 @@ class MovieItem extends StatelessWidget {
                                       begin: Alignment.bottomCenter,
                                       end: Alignment.topCenter)),
                               child: Text(
-                                movie.title,
+                                movie.title!,
                                 style: AppStyles.bold20WhiteRoboto,
                               ),
                             )),
@@ -113,6 +113,7 @@ class MovieItem extends StatelessWidget {
                   ),
                 ),
               );
+          
             },
             options: CarouselOptions(
               height: height * .5,

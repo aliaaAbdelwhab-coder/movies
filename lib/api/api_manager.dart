@@ -1,6 +1,5 @@
-//https://yts.am/api/v2/list_movies.json
-// https://yts.am/api/v2/list_movies.jsonp
-// https://yts.am/api/v2/list_movies.xml
+import 'package:movies/models/similar_model.dart';
+
 import '../../../api/apiConstatnts.dart';
 import 'dart:convert';
 
@@ -24,9 +23,9 @@ class ApiManager {
   }
 
 
-  Future<MovieDetailsResponse?> getMovieDetails(int movieId) async {
+  Future<MovieDetailsResponse?> getMovieDetails(int movieId , String endPoint ) async {
 
-    Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials, Apiconstatnts.moviesDetials, {
+    Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials,endPoint, {
       'movie_id':'$movieId' ,
       "with_cast": 'true'
     });
@@ -44,8 +43,24 @@ class ApiManager {
       throw e.toString();
     }
   }
+  Future<SimilarModel?> getMovieDetailsSimilar(int movieId , String endPoint ) async {
 
+    Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials,endPoint, {
+      'movie_id':'$movieId'
+      
+    });
+    try {
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        return SimilarModel.fromJson(jsonDecode(response.body));
 
-
-
+      } else {
+        print('Failed to load movies similar');
+        // return null;
+      }
+    } catch (e) {
+      print(e);
+      throw e.toString();
+    }
+  }
 }

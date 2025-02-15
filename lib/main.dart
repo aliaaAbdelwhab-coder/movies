@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName: (context) => LoginScreen(),
             ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
             HomeTab.routeName: (context) => HomeTab(),
-           // MovieDetailsView.movieRoute: (context) => MovieDetailsView(movieId: movieId),
             ProfileTab.routeName: (context) => ProfileTab(),
             SearchTab.routeName: (context) => SearchTab(),
             BrowseTab.routeName: (context) => BrowseTab(),
