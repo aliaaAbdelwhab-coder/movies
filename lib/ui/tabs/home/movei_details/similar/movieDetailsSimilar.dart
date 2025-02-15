@@ -7,6 +7,7 @@ import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/widget/MovieItemWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Moviedetailssimilar extends StatefulWidget {
   int movieId;
   Moviedetailssimilar({required this.movieId});
@@ -31,7 +32,7 @@ class _MoviedetailssimilarState extends State<Moviedetailssimilar> {
 
   @override
   Widget build(BuildContext context) {
-  var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return BlocBuilder<Similarviewmodle, SimilarState>(
         bloc: viewModle,
         builder: (context, state) {
@@ -44,47 +45,25 @@ class _MoviedetailssimilarState extends State<Moviedetailssimilar> {
           } else if (state is SimilarErrorState) {
             return Center(
               child: Text(
-                state.errorMessage,
-                style: AppStyles.regular16WhiteRoboto,
-              ),
+                "No similar movies",
+                style: AppStyles.regular20WhiteInter,
+              )
             );
-          } else if (state is SimilarSuccessState) {
-            
-            return Column(
-
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: size.height*0.02,),
-                Text(AppLocalizations.of(context)!.similar ,
-                 style: AppStyles.bold24WhiteRoboto,),
-                 SizedBox(height: size.height*0.02,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Movieitemwidget(movieId: state.movies[0].id!, 
-                    image:state.movies[0].mediumCoverImage! ,
-                     rating: state.movies[0].rating?? 0.0),
-                    Movieitemwidget(movieId: state.movies[1].id!, 
-                    image:state.movies[1].mediumCoverImage! ,
-                     rating: state.movies[1].rating?? 0.0)
-                  ],
-                ),
-                SizedBox(height: size.height*0.02,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Movieitemwidget(movieId: state.movies[2].id!, 
-                    image:state.movies[2].mediumCoverImage! ,
-                     rating: state.movies[2].rating?? 0.0),
-                    Movieitemwidget(movieId: state.movies[3].id!, 
-                    image:state.movies[3].mediumCoverImage! ,
-                     rating: state.movies[3].rating?? 0.0)
-                  ],
-                ),                
-              ],
-            );
+          } else if (state is SimilarSuccessState && state.movies.isNotEmpty) {
+            return Wrap(
+              spacing:size.width*0.03  , // Horizontal space between items
+              runSpacing: size.height*0.02,  // Vertical space between lines             
+                children: state.movies.map((movie) {
+              return Movieitemwidget(
+                  movieId: movie.id!,
+                  image: movie.mediumCoverImage!,
+                  rating: movie.rating ?? 0.0);
+            }).toList());
           }
-          return Container();
+          return Text(
+            "no similar movies",
+            style: AppStyles.regular20WhiteInter,
+          );
         });
   }
 }

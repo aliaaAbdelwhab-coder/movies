@@ -36,7 +36,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
     super.initState();
 
     viewModel.getMovieDetails(Apiconstatnts.moviesDetials);
-
   }
 
   @override
@@ -55,59 +54,58 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
           } else if (state is MoviesDetailsSuccessState) {
             //final movie = state.movieDetails.movie;
             return Scaffold(
-              body: CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: MovieDetailsItem(movieDetails: state.movieDetails),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Moviedetailssimilar(movieId: state.movieDetails.movie!.id!,),
-                  ),                  
-                  SliverToBoxAdapter(
-                    child: Padding(
-
-                      padding: EdgeInsets.only(left: width * 0.03),
+              body: Container(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: MovieDetailsItem(movieDetails: state.movieDetails),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height:height*0.02,),
+                          Text(
+                            AppLocalizations.of(context)!.similar,
+                            style: AppStyles.bold24WhiteRoboto,
+                          ),
+                          SizedBox(height:height*0.02,),
+                        ],
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Moviedetailssimilar(
+                        movieId: state.movieDetails.movie!.id!,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
                       child: Text(
                         AppLocalizations.of(context)!.summary,
                         style: AppStyles.bold24WhiteInter,
                       ),
-
                     ),
-                  ),
-
-                  SliverToBoxAdapter(
-                    child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: width * 0.03, vertical: height * 0.02),
-                        child: Text(
-                          state.movieDetails.movie!.descriptionFull!.isEmpty ||
-                                  state.movieDetails.movie!.descriptionFull ==
-                                      null
-                              ? AppLocalizations.of(context)!.na
-                              : state.movieDetails.movie!.descriptionFull!,
-                          style: AppStyles.regular20WhiteRoboto,
-                        )),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+                    SliverToBoxAdapter(
+                      child: Text(
+                        state.movieDetails.movie!.descriptionFull!.isEmpty ||
+                                state.movieDetails.movie!.descriptionFull ==
+                                    null
+                            ? AppLocalizations.of(context)!.na
+                            : state.movieDetails.movie!.descriptionFull!,
+                        style: AppStyles.regular20WhiteRoboto,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
                       child: Text(
                         'Cast',
                         style: AppStyles.bold24WhiteInter,
                       ),
                     ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width * 0.03, vertical: height * 0.01),
+                    SliverToBoxAdapter(
                       child:
                           CastWidget(castList: state.movieDetails.movie!.cast),
                     ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+                    SliverToBoxAdapter(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -125,9 +123,9 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                           ),
                         ],
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             );
             //return MovieDetailsItem();

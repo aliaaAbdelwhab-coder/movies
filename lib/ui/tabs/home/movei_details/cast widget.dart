@@ -25,7 +25,7 @@ class CastWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               var castMember = castList![index];
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:  EdgeInsets.symmetric(vertical:height*0.005),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       vertical: height * 0.01, horizontal: width * 0.01),
