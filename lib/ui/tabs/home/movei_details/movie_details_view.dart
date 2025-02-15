@@ -6,6 +6,7 @@ import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
 import 'package:movies/ui/tabs/home/movei_details/movieDetailsGenres.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
+import 'package:movies/ui/tabs/home/movei_details/screenshots%20widget.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../utils/app_colors.dart';
@@ -60,7 +61,22 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                 slivers: [
                   SliverToBoxAdapter(
                     child: MovieDetailsItem(movieDetails: state.movieDetails),
-                  ),
+                  ), 
+                    SliverToBoxAdapter(
+                     child: Padding(
+                     padding: EdgeInsets.only(left: 12, bottom: 0),
+                      child: Text('Screenshots', style: AppStyles.bold24WhiteInter),
+  ),
+),
+                SliverToBoxAdapter(
+                   child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                     child: ScreenShotsWidget(
+                     image1:state.movieDetails.movie!.mediumScreenshotImage1 ?? '' , 
+                     image2:state.movieDetails.movie!.mediumScreenshotImage2 ?? '' ,
+                     image3:state.movieDetails.movie!.mediumScreenshotImage3 ?? ''), 
+  ),
+),
                   SliverToBoxAdapter(
                     child: Padding(
                    padding: EdgeInsets.only(left: 12, bottom: 0),
