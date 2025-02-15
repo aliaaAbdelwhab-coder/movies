@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
 import 'package:movies/ui/tabs/home/movei_details/movieDetailsGenres.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
+import 'package:movies/ui/tabs/home/movei_details/similar/movieDetailsSimilar.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../utils/app_colors.dart';
@@ -31,13 +33,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("=================================================");
-    print(widget.movieId);
-    print("========================================");
-
-
-
-    viewModel.getMovieDetails();
+    viewModel.getMovieDetails(Apiconstatnts.moviesDetials);
   }
 
   @override
@@ -62,11 +58,15 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                     child: MovieDetailsItem(movieDetails: state.movieDetails),
                   ),
                   SliverToBoxAdapter(
+                    child: Moviedetailssimilar(movieId: state.movieDetails.movie!.id!,),
+                  ),                  
+                  SliverToBoxAdapter(
                     child: Padding(
                    padding: EdgeInsets.only(left: 12, bottom: 0),
-                      child: Text('Cast',style: AppStyles.bold24WhiteInter,),
+                      child: Text(AppLocalizations.of(context)!.cast,style: AppStyles.bold24WhiteInter,),
                     ),
                   ),
+
                   SliverToBoxAdapter(
                     child:Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),

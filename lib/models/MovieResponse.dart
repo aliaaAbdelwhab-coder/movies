@@ -4,12 +4,12 @@ part 'MovieResponse.g.dart';
 
 @JsonSerializable()
 class MovieResponse {
-  final String status;
+   String ?status;
   @JsonKey(name: 'status_message')
-  final String statusMessage;
-  final Data data;
+   String ? statusMessage;
+   Data ?data;
   @JsonKey(name: '@meta')
-  final Meta meta;
+   Meta? meta;
 
   MovieResponse({
     required this.status,
@@ -27,11 +27,11 @@ class MovieResponse {
 @JsonSerializable()
 class Data {
   @JsonKey(name: 'movie_count')
-  final int movieCount;
-  final int limit;
+   int ?movieCount;
+   int ?limit;
   @JsonKey(name: 'page_number')
-  final int pageNumber;
-  final List<Movie> movies;
+   int ? pageNumber;
+   List<Movie> ? movies;
 
   Data({
     required this.movieCount,
@@ -47,45 +47,45 @@ class Data {
 
 @JsonSerializable()
 class Movie {
-  final int id;
-  final String url;
+   int ?id;
+   String ?url;
   @JsonKey(name: 'imdb_code')
-  final String imdbCode;
-  final String title;
+   String ? imdbCode;
+   String? title;
   @JsonKey(name: 'title_english')
-  final String titleEnglish;
+   String ?titleEnglish;
   @JsonKey(name: 'title_long')
-  final String titleLong;
-  final String slug;
-  final int year;
-  final double rating;
-  final int runtime;
-  final List<String> genres;
-  final String summary;
+   String ?titleLong;
+   String? slug;
+   int? year;
+   double ?rating;
+   int? runtime;
+   List<String> ?genres;
+   String? summary;
   @JsonKey(name: 'description_full')
-  final String descriptionFull;
-  final String synopsis;
+   String ? descriptionFull;
+   String ?synopsis;
   @JsonKey(name: 'yt_trailer_code')
-  final String ytTrailerCode;
-  final String language;
+   String ?ytTrailerCode;
+   String ? language;
   @JsonKey(name: 'mpa_rating')
-  final String mpaRating;
+   String? mpaRating;
   @JsonKey(name: 'background_image')
-  final String backgroundImage;
+   String ? backgroundImage;
   @JsonKey(name: 'background_image_original')
-  final String backgroundImageOriginal;
+   String  ?backgroundImageOriginal;
   @JsonKey(name: 'small_cover_image')
-  final String smallCoverImage;
+   String? smallCoverImage;
   @JsonKey(name: 'medium_cover_image')
-  final String mediumCoverImage;
+   String ? mediumCoverImage;
   @JsonKey(name: 'large_cover_image')
-  final String largeCoverImage;
-  final String state;
-  final List<Torrent> torrents;
+   String largeCoverImage;
+  String ?state;
+   List<Torrent> ? torrents;
   @JsonKey(name: 'date_uploaded')
-  final String dateUploaded;
+   String ? dateUploaded;
   @JsonKey(name: 'date_uploaded_unix')
-  final int dateUploadedUnix;
+   int ? dateUploadedUnix;
 
   Movie({
     required this.id,
@@ -123,27 +123,27 @@ class Movie {
 
 @JsonSerializable()
 class Torrent {
-  final String url;
-  final String hash;
-  final String quality;
-  final String type;
+   String ? url;
+   String ?hash;
+   String ?quality;
+   String ?type;
   @JsonKey(name: 'is_repack')
-  final String isRepack;
+   String ?isRepack;
   @JsonKey(name: 'video_codec')
-  final String videoCodec;
+   String ?videoCodec;
   @JsonKey(name: 'bit_depth')
-  final String bitDepth;
+   String ?bitDepth;
   @JsonKey(name: 'audio_channels')
-  final String audioChannels;
-  final int seeds;
-  final int peers;
-  final String size;
+   String ?audioChannels;
+   int ?seeds;
+   int ?peers;
+   String ?size;
   @JsonKey(name: 'size_bytes')
-  final int sizeBytes;
+   int ?sizeBytes;
   @JsonKey(name: 'date_uploaded')
-  final String dateUploaded;
+   String? dateUploaded;
   @JsonKey(name: 'date_uploaded_unix')
-  final int dateUploadedUnix;
+   int ?dateUploadedUnix;
 
   Torrent({
     required this.url,
@@ -171,13 +171,13 @@ class Torrent {
 @JsonSerializable()
 class Meta {
   @JsonKey(name: 'server_time')
-  final int serverTime;
+   int ? serverTime;
   @JsonKey(name: 'server_timezone')
-  final String serverTimezone;
+   String? serverTimezone;
   @JsonKey(name: 'api_version')
-  final int apiVersion;
+   int ?apiVersion;
   @JsonKey(name: 'execution_time')
-  final String executionTime;
+   String ?executionTime;
 
   Meta({
     required this.serverTime,
