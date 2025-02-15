@@ -12,9 +12,9 @@ class LoginViewModel extends Cubit<LoginStates> {
   LoginViewModel() : super(InitialLoginState());
 
   TextEditingController emailController =
-      TextEditingController();
+      TextEditingController(text: "aliaa@gmail.com");
   TextEditingController passwordController =
-      TextEditingController();
+      TextEditingController(text:"Aliaa1234@");
   var formKey = GlobalKey<FormState>();
 
   Future<void> login() async {
