@@ -31,7 +31,7 @@ class MovieDetailsItem extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.all(8.0),
+          
           child: Column(
             children: [
               SizedBox(
@@ -56,11 +56,11 @@ class MovieDetailsItem extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.34,
+                height: size.height * 0.31,
               ),
               Center(child: Image.asset(AssetsManager.watchIcon)),
               SizedBox(
-                height: size.height * 0.1,
+                height: size.height * 0.11,
               ),
               Text(
                 movieDetails.movie!.title!,

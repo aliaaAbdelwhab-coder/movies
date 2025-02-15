@@ -7,6 +7,7 @@ import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
 import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/utils/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
@@ -17,11 +18,14 @@ import 'package:movies/ui/tabs/search/search_tab.dart';
 import 'package:movies/widget/my_bloc_observer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
+var initScreen;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+   initScreen = await prefs.getInt("initScreen");
   runApp(MyApp());
+  await prefs.setInt("initScreen", 1);
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-          initialRoute: IntroductionScreen.routeName,
+          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: LoginScreen.routeName,
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
@@ -43,11 +47,10 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName: (context) => LoginScreen(),
             ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
             HomeTab.routeName: (context) => HomeTab(),
-           // MovieDetailsView.movieRoute: (context) => MovieDetailsView(movieId: movieId),
             ProfileTab.routeName: (context) => ProfileTab(),
             SearchTab.routeName: (context) => SearchTab(),
             BrowseTab.routeName: (context) => BrowseTab(),
-           UpdateProfile.routeName: (context) => UpdateProfile(),
+            UpdateProfile.routeName: (context) => UpdateProfile(),
           },
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

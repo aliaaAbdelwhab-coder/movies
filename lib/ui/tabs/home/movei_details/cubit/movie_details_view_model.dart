@@ -12,31 +12,24 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsState> {
       : super(MoviesDetailsLoadingState());
 
   // todo: hold data - handel logic
-  Future<void> getMovieDetails() async {
+  Future<void> getMovieDetails(String endPoin) async {
     try {
       emit(MoviesDetailsLoadingState());
-      var response = await apiManager.getMovieDetails(movieId);
+      var response = await apiManager.getMovieDetails(movieId, endPoin);
 
-
-
-
-        if ( response!.status == 'ok') {
-
-          emit(MoviesDetailsSuccessState(movieDetails:response.data!,
-
-          ));
+      if (response!.status == 'ok') {
+        emit(MoviesDetailsSuccessState(
+          movieDetails: response.data!,
+        ));
         print('Loading movies Success');
       } else {
         emit(MoviesDetailsErrorState(errorMessage: response.statusMessage!));
         print('Failed to load movies');
       }
-     } catch (e) {
+    } catch (e) {
       // print('no internet');
       emit(MoviesDetailsErrorState(errorMessage: e.toString()));
       print(e);
     }
   }
-
-
-
 }

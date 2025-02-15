@@ -1,12 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
 import 'package:movies/ui/tabs/home/movei_details/movieDetailsGenres.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
+
 import 'package:movies/ui/tabs/home/movei_details/screenshots%20widget.dart';
+
+import 'package:movies/ui/tabs/home/movei_details/similar/movieDetailsSimilar.dart';
+
 import 'package:movies/utils/app_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../utils/app_colors.dart';
@@ -26,19 +31,15 @@ class MovieDetailsView extends StatefulWidget {
 }
 
 class _MovieDetailsViewState extends State<MovieDetailsView> {
-  late MovieDetailsViewModel viewModel = MovieDetailsViewModel(movieId: widget.movieId);
+  late MovieDetailsViewModel viewModel =
+      MovieDetailsViewModel(movieId: widget.movieId);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("=================================================");
-    print(widget.movieId);
-    print("========================================");
 
-
-
-    viewModel.getMovieDetails();
+    viewModel.getMovieDetails(Apiconstatnts.moviesDetials);
   }
 
   @override
@@ -57,12 +58,14 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
           } else if (state is MoviesDetailsSuccessState) {
             //final movie = state.movieDetails.movie;
             return Scaffold(
-              body:CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: MovieDetailsItem(movieDetails: state.movieDetails),
-                  ), 
+              body: Container(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+                child: CustomScrollView(
+                  slivers: [
                     SliverToBoxAdapter(
+                      child: MovieDetailsItem(movieDetails: state.movieDetails),
+                    ),
+                                        SliverToBoxAdapter(
                      child: Padding(
                      padding: EdgeInsets.only(left: 12, bottom: 0),
                       child: Text('Screenshots', style: AppStyles.bold24WhiteInter),
@@ -77,43 +80,78 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                      image3:state.movieDetails.movie!.mediumScreenshotImage3 ?? ''), 
   ),
 ),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                   padding: EdgeInsets.only(left: 12, bottom: 0),
-                      child: Text('Cast',style: AppStyles.bold24WhiteInter,),
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child:Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: CastWidget(
-                          castList: state.movieDetails.movie!.cast
-                      ),
-                    ) ,
-                  ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width*0.03 ),
                     
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.genres , style: AppStyles.bold24WhiteRoboto,),
-                        SizedBox(height: height*0.01,),
-                        Moviedetailsgenres(genres:state.movieDetails.movie!.genres!),
-                          SizedBox(height: height*0.03,),
-                      ],
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height:height*0.02,),
+                          Text(
+                            AppLocalizations.of(context)!.similar,
+                            style: AppStyles.bold24WhiteRoboto,
+                          ),
+                          SizedBox(height:height*0.02,),
+                        ],
+                      ),
                     ),
-                  ) ,
-                )  
-                ],
-              ),
+                    SliverToBoxAdapter(
+                      child: Moviedetailssimilar(
+                        movieId: state.movieDetails.movie!.id!,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Text(
+                        AppLocalizations.of(context)!.summary,
+                        style: AppStyles.bold24WhiteInter,
+                      ),
 
+                    ),
+                    SliverToBoxAdapter(
+                      child: Text(
+                        state.movieDetails.movie!.descriptionFull!.isEmpty ||
+                                state.movieDetails.movie!.descriptionFull ==
+                                    null
+                            ? AppLocalizations.of(context)!.na
+                            : state.movieDetails.movie!.descriptionFull!,
+                        style: AppStyles.regular20WhiteRoboto,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Text(
+                        'Cast',
+                        style: AppStyles.bold24WhiteInter,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child:
+                          CastWidget(castList: state.movieDetails.movie!.cast),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.genres,
+                            style: AppStyles.bold24WhiteRoboto,
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Moviedetailsgenres(
+                              genres: state.movieDetails.movie!.genres!),
+                          SizedBox(
+                            height: height * 0.03,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             );
             //return MovieDetailsItem();
           } else if (state is MoviesDetailsErrorState) {
-            return
-              Center(
+            return Center(
               child: Text(
                 state.errorMessage,
                 style: AppStyles.regular16WhiteRoboto,

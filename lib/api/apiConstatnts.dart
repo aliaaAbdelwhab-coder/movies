@@ -1,4 +1,4 @@
-class  Apiconstatnts {
+class Apiconstatnts {
   static String serverName = "route-movie-apis.vercel.app";
   static String updateProfileEndPoint = "/profile";
   static String deleteAccountEndPoint = "/profile";
@@ -9,4 +9,5 @@ class  Apiconstatnts {
   static String baseUrlmoviewDetials = "yts.mx";
   static String moviesEndPoint = '/api/v2/list_movies.json';
   static String moviesDetials = "/api/v2/movie_details.json";
+  static String movieSuggestions = "/api/v2/movie_suggestions.json";
 }

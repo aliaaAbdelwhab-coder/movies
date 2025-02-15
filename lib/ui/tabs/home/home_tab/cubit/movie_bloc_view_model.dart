@@ -18,10 +18,10 @@ class MovieBlocViewModel extends Cubit<MovieState> {
       emit(MoviesLoadingState());
       var response = await apiManager.getMovies();
       if (response!.status == 'ok') {
-        emit(MoviesSuccessState(movies: response.data.movies));
+        emit(MoviesSuccessState(movies: response.data!.movies!));
         print('Loading movies Success');
       } else {
-        emit(MoviesErrorState(errorMessage: response.statusMessage));
+        emit(MoviesErrorState(errorMessage: response.statusMessage!));
         print('Failed to load movies');
       }
     } catch (e) {

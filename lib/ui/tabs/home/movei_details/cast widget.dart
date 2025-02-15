@@ -18,13 +18,14 @@ class CastWidget extends StatelessWidget {
             child: Text("No cast available",
                 style: TextStyle(color: Colors.white)))
         : ListView.builder(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: castList!.length,
             itemBuilder: (context, index) {
               var castMember = castList![index];
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:  EdgeInsets.symmetric(vertical:height*0.005),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       vertical: height * 0.01, horizontal: width * 0.01),
