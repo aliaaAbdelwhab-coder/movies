@@ -27,8 +27,9 @@ class ApiManager {
 
     Uri url = Uri.https(Apiconstatnts.baseUrlmoviewDetials,endPoint, {
       'movie_id':'$movieId' ,
-      "with_cast": 'true'
-    });
+      "with_cast": 'true' ,
+      "with_images" : 'true' , 
+  });
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
