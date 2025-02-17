@@ -1,6 +1,6 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import 'package:movies/Register/register_modle.dart';
 import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/profile/update_profile_model.dart';
 
@@ -17,7 +17,8 @@ class UpdateProfileRepository {
           "avaterId": avaterId,
         }),
         headers: {"Content-Type": "application/json",
-        "Authorization": "Bearer $token",},
+          "Authorization": "Bearer $token"
+        },
       );
 
       return UpdateProfileModel.fromJson(jsonDecode(response.body));
