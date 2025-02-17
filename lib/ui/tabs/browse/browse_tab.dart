@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
 
 class BrowseTab extends StatelessWidget {
   static const String routeName = 'browse_screen';
@@ -7,6 +8,6 @@ class BrowseTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.pink,width: 200, height: 200,); // just testing to see if the tabs are properly displayed
+    return Browsgetmoviesui(genre: 'action',);
   }
 }

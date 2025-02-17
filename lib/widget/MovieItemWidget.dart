@@ -20,36 +20,45 @@ class Movieitemwidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MovieDetailsView(movieId: movieId
-                    )));
+                builder: (context) => MovieDetailsView(movieId: movieId)));
         print('Go To Movie Details');
       },
       child: Container(
-        width: 189,
-        height: 279,
+        width: size.width * 0.4,
+        height: size.height * 0.2,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24),
           child: Stack(
             fit: StackFit.expand,
             children: [
               CachedNetworkImage(
-                imageUrl: image,
+                imageUrl: image?.isNotEmpty == true
+                    ? image!
+                    : 'https://via.placeholder.com/70', // Fallback placeholder
+                // width: width *0.1,
+                // height: height *.1,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(
-                  color: AppColors.darkGreyColor,
-                )),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.error, color: Colors.red),
+                //======================
+                // imageUrl: image,
+                // fit: BoxFit.cover,
+                // placeholder: (context, url) => Center(
+                //     child: CircularProgressIndicator(
+                //   color: AppColors.darkGreyColor,
+                // )),
+                // errorWidget: (context, url, error) => Icon(Icons.error),
               ),
               Align(
                 alignment: Alignment.topLeft,
-          
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal:size.width*0.03, 
-                  vertical:  size.height*0.015,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.03,
+                    vertical: size.height * 0.015,
                   ),
-                   width:size.width*0.15,
-                   height: size.height*0.035,
+                  width: size.width * 0.15,
+                  height: size.height * 0.035,
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.black54,
