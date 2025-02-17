@@ -18,6 +18,8 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsState> {
       var response = await apiManager.getMovieDetails(movieId, endPoin);
 
       if (response!.status == 'ok') {
+
+      
         emit(MoviesDetailsSuccessState(
           movieDetails: response.data!,
         ));

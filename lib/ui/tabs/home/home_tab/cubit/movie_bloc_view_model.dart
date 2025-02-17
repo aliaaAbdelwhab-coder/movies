@@ -9,7 +9,7 @@ part 'movie_event.dart';
 @injectable
 class MovieBlocViewModel extends Cubit<MovieState> {
   ApiManager apiManager = ApiManager();
-
+    static Set<String> MoviesGenreSet = {};
   MovieBlocViewModel() : super(MoviesInitialState());
 
   // todo: hold data - handel logic
@@ -18,6 +18,9 @@ class MovieBlocViewModel extends Cubit<MovieState> {
       emit(MoviesLoadingState());
       var response = await apiManager.getMovies();
       if (response!.status == 'ok') {
+        // for (var i = 0; i < response.; i++) {
+          
+        // }
         emit(MoviesSuccessState(movies: response.data!.movies!));
         print('Loading movies Success');
       } else {
