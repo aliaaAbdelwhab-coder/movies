@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:movies/api/apiConstatnts.dart';
+import 'package:movies/models/movie_response.dart';
 
 
-import '../../../../models/MovieResponse.dart';
+
 import 'home_tab_remote_data_source.dart';
 
 @Injectable(as: HomeTabRemoteDataSource)
