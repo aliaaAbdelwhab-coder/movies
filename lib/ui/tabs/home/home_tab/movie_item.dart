@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/models/movie_response.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 
-import '../../../../models/MovieResponse.dart';
+
 
 class MovieItem extends StatelessWidget {
-  List<Movie> movies;
+  List<MoviesData> movies;
 
   MovieItem({required this.movies});
 
@@ -35,7 +36,7 @@ class MovieItem extends StatelessWidget {
           CarouselSlider.builder(
             itemCount: movies.length,
             itemBuilder: (context, index, realId) {
-              final movie = movies[index];
+            var  movie = movies[index];
               return InkWell(
                 onTap: () {
                 
@@ -59,7 +60,7 @@ class MovieItem extends StatelessWidget {
                       fit: StackFit.expand,
                       children: [
                         CachedNetworkImage(
-                          imageUrl: movie.largeCoverImage,
+                          imageUrl: movie.largeCoverImage ?? '',
                           fit: BoxFit.cover,
                           placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(

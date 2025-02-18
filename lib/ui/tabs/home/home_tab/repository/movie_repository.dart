@@ -1,4 +1,6 @@
-import 'package:movies/models/MovieResponse.dart';
+
+
+import 'package:movies/models/movie_response.dart';
 
 import '../../../../../api/api_manager.dart';
 

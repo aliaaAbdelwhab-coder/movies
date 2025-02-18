@@ -1,4 +1,6 @@
-import '../../../../../models/MovieResponse.dart';
+
+
+import 'package:movies/models/movie_response.dart';
 
 abstract class MovieState {}
 
@@ -12,7 +14,7 @@ class MoviesErrorState extends MovieState {
 }
 
 class MoviesSuccessState extends MovieState {
-  List<Movie> movies;
+  List<MoviesData> movies;
 
   MoviesSuccessState({required this.movies});
 }
