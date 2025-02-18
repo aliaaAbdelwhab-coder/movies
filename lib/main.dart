@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: LoginScreen.routeName,
+          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: Home.homeRoute,
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),

@@ -1,4 +1,6 @@
 
+import 'package:movies/models/MovieDetailsResponse.dart';
+
 import 'package:movies/models/movie_response.dart';
 import 'package:movies/models/similar_model.dart';
 
@@ -16,14 +18,14 @@ import '../models/MovieResponse.dart';
 
 class ApiManager {
 
-  Future<MovieResponse?> getMovies({String ?genre}) async {
+
+  Future<MovieResponse?> getMovies() async {
     Uri url = Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.moviesEndPoint ,{
-      'sort_by' : 'year',
-      'genre' : genre
+      'sort_by' : 'year'
     });
     try {
       var response = await http.get(url);
-       
+
       return MovieResponse.fromJson(jsonDecode(response.body));
     } catch (e) {
       print(e);
@@ -74,6 +76,28 @@ class ApiManager {
     }
   }
 
+  Future<Set<String>> getMovieGenres() async {
+    try {
+      MovieResponse? movieResponse = await getMovies();
+      if (movieResponse != null && movieResponse.data?.movies != null) {
+        return await getGenresFromMovies(movieResponse.data!.movies!);
+      }
+      return {};
+    } catch (e) {
+      print(e);
+      return {};
+    }
+  }
+
+  Future<Set<String>> getGenresFromMovies(List<MoviesData> movies) async {
+    Set<String> genresSet = {};
+    for (var movie in movies) {
+      genresSet.addAll(movie.genres ?? []);
+    }
+    return genresSet;
+  }
+
+
   Future<GetProfileModel> getProfileData() async {
     Uri url =
         Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.getProfileEndPoint);
@@ -86,4 +110,5 @@ class ApiManager {
       throw e.toString();
     }
   }
+
 }
