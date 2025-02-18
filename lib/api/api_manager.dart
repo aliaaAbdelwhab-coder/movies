@@ -1,3 +1,4 @@
+
 import 'package:movies/models/movie_response.dart';
 import 'package:movies/models/similar_model.dart';
 
@@ -7,6 +8,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies/models/MovieDetailsResponse.dart';
 
+import 'package:movies/models/similar_model.dart';
+import 'package:movies/ui/tabs/profile/get_profile_model.dart';
+
+import '../../../api/apiConstatnts.dart';
+import '../models/MovieResponse.dart';
 
 class ApiManager {
 
@@ -62,6 +68,19 @@ class ApiManager {
         print('Failed to load movies similar');
         // return null;
       }
+    } catch (e) {
+      print(e);
+      throw e.toString();
+    }
+  }
+
+  Future<GetProfileModel> getProfileData() async {
+    Uri url =
+        Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.getProfileEndPoint);
+    try {
+      var response = await http.get(url);
+
+      return GetProfileModel.fromJson(jsonDecode(response.body));
     } catch (e) {
       print(e);
       throw e.toString();

@@ -10,3 +10,9 @@ Future<String?> getToken() async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.getString('auth_token');
 }
+
+Future<bool?> removeToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.remove('auth_token');
+  return true;
+}

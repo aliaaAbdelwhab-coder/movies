@@ -2,19 +2,20 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 import 'package:movies/ui/login/LoginModel.dart';
 import 'package:movies/ui/login/cubit/login%20states.dart';
-import 'package:http/http.dart' as http;
 import 'package:movies/ui/login/saveToken.dart';
+
 import '../../../api/apiConstatnts.dart';
 
 class LoginViewModel extends Cubit<LoginStates> {
   LoginViewModel() : super(InitialLoginState());
 
   TextEditingController emailController =
-      TextEditingController(text: "aliaa@gmail.com");
+      TextEditingController(text: "Mina2@gmail.com");
   TextEditingController passwordController =
-      TextEditingController(text:"Aliaa1234@");
+      TextEditingController(text: "Mina@1234");
   var formKey = GlobalKey<FormState>();
 
   Future<void> login() async {

@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
-import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/localization/localizationSatates.dart';
 import 'package:movies/localization/localization_bloc.dart';
-import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
-import 'package:movies/utils/app_theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'on_boarding_screens/Introduction_screen.dart';
-import 'on_boarding_screens/on_boarding_screen.dart';
+import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
+import 'package:movies/ui/login/saveToken.dart';
 import 'package:movies/ui/tabs/browse/browse_tab.dart';
+import 'package:movies/ui/tabs/home/home_tab/home_tab.dart';
 import 'package:movies/ui/tabs/profile/profile_tab.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
+import 'package:movies/utils/app_theme.dart';
 import 'package:movies/widget/my_bloc_observer.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'on_boarding_screens/Introduction_screen.dart';
+import 'on_boarding_screens/on_boarding_screen.dart';
 
 var initScreen;
+var initRoute;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-   initScreen = await prefs.getInt("initScreen");
+  // initRoute =
+  if (getToken() != null) {}
+  initScreen = await prefs.getInt("initScreen");
   runApp(MyApp());
   await prefs.setInt("initScreen", 1);
 }
