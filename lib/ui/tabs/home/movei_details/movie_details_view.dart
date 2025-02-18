@@ -61,6 +61,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                   child: CustomScrollView(
                     slivers: [
                       SliverToBoxAdapter(
+
                         child:
                             MovieDetailsItem(movieDetails: state.movieDetails),
                       ),
@@ -68,6 +69,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         child: Padding(
                           padding:
                               EdgeInsets.symmetric(vertical: height * 0.02),
+
                           child: Text('Screenshots',
                               style: AppStyles.bold24WhiteInter),
                         ),
@@ -129,8 +131,10 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         ),
                       ),
                       SliverToBoxAdapter(
-                        child: CastWidget(
-                            castList: state.movieDetails.movie!.cast),
+
+                        child:
+                            CastWidget(castList: state.movieDetails.movie!.cast),
+
                       ),
                       SliverToBoxAdapter(
                         child: Column(

@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/ui/tabs/browse/cubit/browse%20view%20model.dart';
 import 'package:movies/ui/tabs/browse/genre%20category.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
+
 
 import 'cubit/browse states.dart';
 
@@ -30,6 +34,7 @@ BrowseViewModel viewModel=BrowseViewModel();
 
   @override
   Widget build(BuildContext context) {
+
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
@@ -98,6 +103,7 @@ BrowseViewModel viewModel=BrowseViewModel();
         },
       ),
     );
+
 
   }
 

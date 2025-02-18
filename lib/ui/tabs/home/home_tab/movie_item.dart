@@ -60,14 +60,30 @@ class MovieItem extends StatelessWidget {
                       fit: StackFit.expand,
                       children: [
                         CachedNetworkImage(
-                          imageUrl: movie.largeCoverImage ?? '',
+                       imageUrl: movie.largeCoverImage?.isNotEmpty == true
+                              ? movie.largeCoverImage!
+                              : 'https://via.placeholder.com/70', // Fallback placeholder
+                          // width: width *0.1,
+                          // height: height *.1,
                           fit: BoxFit.cover,
+
                           placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.darkGreyColor,
                               )),
+
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                              Icon(Icons.error, color: Colors.red),
+
+                          //================================================
+                          // imageUrl: movie.largeCoverImage ?? '',
+                          // fit: BoxFit.cover,
+                          // placeholder: (context, url) => Center(
+                          //     child: CircularProgressIndicator(
+                          //   color: AppColors.darkGreyColor,
+                          // )),
+                          // errorWidget: (context, url, error) =>
+                          //     Icon(Icons.error),
                         ),
                         Positioned(
                           top: 16,

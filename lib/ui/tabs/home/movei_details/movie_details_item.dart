@@ -20,8 +20,19 @@ class MovieDetailsItem extends StatelessWidget {
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: movieDetails.movie!.largeCoverImage ?? 'No Image Found',
-          fit: BoxFit.fill,
+          // fit: BoxFit.fill,
+        imageUrl: movieDetails.movie!.largeCoverImage?.isNotEmpty == true
+                    ? movieDetails.movie!.largeCoverImage!
+                    : 'https://via.placeholder.com/70', // Fallback placeholder
+                // width: width *0.1,
+                // height: height *.1,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.error, color: Colors.red),
+          //===========================
+          // imageUrl: movieDetails.movie!.largeCoverImage ?? '',
+          
         ),
         Container(
           width: size.width,
@@ -34,25 +45,30 @@ class MovieDetailsItem extends StatelessWidget {
           
           child: Column(
             children: [
-              SizedBox(
-                height: size.height * 0.02,
-              ),
+              // SizedBox(
+              //   // height: size.height * 0.005,
+              // ),
               Align(
                 alignment: Alignment.topLeft,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColors.whiteColor,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal:size.width * 0.045 ,
+                  vertical: size.height * 0.015 ,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: AppColors.whiteColor,
+                        ),
                       ),
-                    ),
-                    Image.asset(AssetsManager.saveIcon),
-                  ],
+                      Image.asset(AssetsManager.saveIcon),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
