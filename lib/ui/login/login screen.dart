@@ -1,12 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
-import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/login/cubit/login%20states.dart';
 import 'package:movies/ui/login/cubit/login%20view%20model.dart';
 import 'package:movies/widget/LocalizationToggleswitch.dart';
+
 import '../../utils/app_colors.dart';
 import '../../utils/app_styles.dart';
 import '../../utils/assets_manager.dart';
@@ -14,7 +15,7 @@ import '../../utils/dialogUtils.dart';
 import '../../widget/button widget.dart';
 import '../../widget/text field widget.dart';
 import 'google sign in api.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
 
@@ -23,20 +24,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-LoginViewModel viewModel=LoginViewModel();
+  LoginViewModel viewModel = LoginViewModel();
 
-bool isObscured= true;
+  bool isObscured = true;
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return BlocListener<LoginViewModel,LoginStates>(
+    return BlocListener<LoginViewModel, LoginStates>(
       bloc: viewModel,
-      listener: (context,state){
-        if(state is LoadingLoginState){
+      listener: (context, state) {
+        if (state is LoadingLoginState) {
           Dialogutils.showLoading(context: context, messsage: "Loading...");
-        }else if(state is ErrorLoginState){
+        } else if (state is ErrorLoginState) {
           Dialogutils.hideLoading(context: context);
           Dialogutils.showMessage(
             context: context,
@@ -44,19 +45,18 @@ bool isObscured= true;
             title: "Error",
             posActionsName: "OK",
           );
-        }else if(state is SuccessLoginState){
+        } else if (state is SuccessLoginState) {
           Dialogutils.hideLoading(context: context);
           Dialogutils.showMessage(
               context: context,
               message: state.SuccessMessage,
               title: "success",
               posActionsName: "OK",
-              posAcitons: (){Navigator.pushReplacementNamed(context, Home.homeRoute);}
-          );
+              posAcitons: () {
+                Navigator.pushReplacementNamed(context, Home.homeRoute);
+              });
         }
-
       },
-
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -75,7 +75,7 @@ bool isObscured= true;
                     height: height * 0.02,
                   ),
                   CustomTextField(
-                    controller: viewModel.emailController,
+                      controller: viewModel.emailController,
                       keyboard: TextInputType.emailAddress,
                       validator: (text) {
                         if (text == null || text.trim().isEmpty) {
@@ -95,7 +95,7 @@ bool isObscured= true;
                     height: height * 0.02,
                   ),
                   CustomTextField(
-                    controller: viewModel.passwordController,
+                      controller: viewModel.passwordController,
                       validator: (text) {
                         if (text == null || text.trim().isEmpty) {
                           return 'please enter your password';
@@ -106,42 +106,40 @@ bool isObscured= true;
                         return null;
                       },
                       obscureText: isObscured,
-
-                      suffixIcon:  IconButton(
-                          onPressed:(){
-                            isObscured=! isObscured;
-                            setState(() {
-
-                            });
-                          },
-                          icon:  Icon(
-                            isObscured ? Icons.visibility_off : Icons.visibility,
-                            color: AppColors.whiteColor,
-                          ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          isObscured = !isObscured;
+                          setState(() {});
+                        },
+                        icon: Icon(
+                          isObscured ? Icons.visibility_off : Icons.visibility,
+                          color: AppColors.whiteColor,
+                        ),
                       ),
-
                       prefixIcon: Image.asset(AssetsManager.passwordIcon),
                       hintText: AppLocalizations.of(context)!.password),
                   SizedBox(
                     height: height * 0.01,
                   ),
                   TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, ForgotPasswordScreen.routeName);
-                      },
+                      onPressed: () {},
                       child: Align(
                         alignment: Alignment.centerRight,
-                        child: Text(AppLocalizations.of(context)!.forget +' '+ AppLocalizations.of(context)!.password +'?',
+                        child: Text(
+                            AppLocalizations.of(context)!.forget +
+                                ' ' +
+                                AppLocalizations.of(context)!.password +
+                                '?',
                             style: AppStyles.regular14YellowRoboto),
                       )),
                   SizedBox(
                     height: height * 0.02,
                   ),
-                  CustomElevatedButton(onButtonClicked:(){
-                    viewModel.login();
-                  },
-                      text: AppLocalizations.of(context)!.login ),
+                  CustomElevatedButton(
+                      onButtonClicked: () {
+                        viewModel.login();
+                      },
+                      text: AppLocalizations.of(context)!.login),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -149,10 +147,11 @@ bool isObscured= true;
                       textAlign: TextAlign.center,
                       TextSpan(children: [
                         TextSpan(
-                            text: AppLocalizations.of(context)!.dont_have_account,
+                            text:
+                                AppLocalizations.of(context)!.dont_have_account,
                             style: AppStyles.regular14WhiteRoboto),
                         TextSpan(
-                            text: AppLocalizations.of(context)!.create_one ,
+                            text: AppLocalizations.of(context)!.create_one,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushNamed(
@@ -194,7 +193,7 @@ bool isObscured= true;
                       onButtonClicked: signIn,
                       textStyle: AppStyles.regular16greyRoboto,
                       prefixIcon: Image.asset(AssetsManager.googleIcon),
-                      text: AppLocalizations.of(context)!.login_with_google ),
+                      text: AppLocalizations.of(context)!.login_with_google),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -208,10 +207,7 @@ bool isObscured= true;
     );
   }
 
-
-
-Future  signIn()async {
-  await GoogleSignInApi.login();
+  Future signIn() async {
+    await GoogleSignInApi.login();
   }
-
 }

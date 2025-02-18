@@ -1,19 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/api/apiConstatnts.dart';
 import 'package:movies/ui/tabs/home/movei_details/cast%20widget.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_state.dart';
 import 'package:movies/ui/tabs/home/movei_details/cubit/movie_details_view_model.dart';
 import 'package:movies/ui/tabs/home/movei_details/movieDetailsGenres.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_item.dart';
-
 import 'package:movies/ui/tabs/home/movei_details/screenshots%20widget.dart';
-
 import 'package:movies/ui/tabs/home/movei_details/similar/movieDetailsSimilar.dart';
-
 import 'package:movies/utils/app_styles.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../utils/app_colors.dart';
 
 class MovieDetailsView extends StatefulWidget {
@@ -64,11 +61,15 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                   child: CustomScrollView(
                     slivers: [
                       SliverToBoxAdapter(
-                        child: MovieDetailsItem(movieDetails: state.movieDetails),
+
+                        child:
+                            MovieDetailsItem(movieDetails: state.movieDetails),
                       ),
                       SliverToBoxAdapter(
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(vertical:height*0.02 ),
+                          padding:
+                              EdgeInsets.symmetric(vertical: height * 0.02),
+
                           child: Text('Screenshots',
                               style: AppStyles.bold24WhiteInter),
                         ),
@@ -130,8 +131,10 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         ),
                       ),
                       SliverToBoxAdapter(
+
                         child:
                             CastWidget(castList: state.movieDetails.movie!.cast),
+
                       ),
                       SliverToBoxAdapter(
                         child: Column(

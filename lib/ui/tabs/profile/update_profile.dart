@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_bloc.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_repository.dart';
@@ -8,11 +10,12 @@ import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
 import 'package:movies/widget/button%20widget.dart';
 import 'package:movies/widget/text%20field%20widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:movies/ui/forgot_password/forgot_password_screen.dart';
+
+import '../../../utils/app_colors.dart';
+import 'get_profile_model.dart';
 
 class UpdateProfile extends StatefulWidget {
-  static const String routeName = "update-profile";
+  static const String routeName = "update_profile";
   const UpdateProfile({super.key});
 
   @override
@@ -21,8 +24,8 @@ class UpdateProfile extends StatefulWidget {
 
 class _UpdateProfileState extends State<UpdateProfile> {
   UpdateProfileRepository updateProfileRepository = UpdateProfileRepository();
-  String selectedAvatar = AssetsManager.profileAvatar; 
-  UpdateProfileBloc viewModel = UpdateProfileBloc();
+  String selectedAvatar = AssetsManager.profileAvatar;
+  UpdateProfileBloc? viewModel;
   List<String> avatarList = [
     AssetsManager.Avatara0,
     AssetsManager.Avatar1,
@@ -34,10 +37,26 @@ class _UpdateProfileState extends State<UpdateProfile> {
     AssetsManager.Avatar7,
     AssetsManager.Avatar8
   ];
-  int selectedAvatarIndex = 0; 
+  int selectedAvatarIndex = 0;
+  bool _isInitial = true;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_isInitial) {
+      final Data args = ModalRoute.of(context)!.settings.arguments as Data;
+      viewModel = UpdateProfileBloc();
+      viewModel?.nameController.text = args.name!;
+      viewModel?.phoneController.text = args.phone!;
+      selectedAvatarIndex = args.avaterId!;
+      selectedAvatar = avatarList[selectedAvatarIndex];
+      _isInitial = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final Data args = ModalRoute.of(context)!.settings.arguments as Data;
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return BlocListener<UpdateProfileBloc, UpdateProfileState>(
@@ -57,7 +76,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text(AppLocalizations.of(context)!.pick_avatar, style: AppStyles.regular16YellowRoboto),
+          title: Text(
+            AppLocalizations.of(context)!.pick_avatar,
+            style: AppStyles.regular16YellowRoboto,
+          ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -67,17 +89,17 @@ class _UpdateProfileState extends State<UpdateProfile> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    _showAvatarPicker(context); 
+                    _showAvatarPicker(context);
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: height * 0.06),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.yellow.withOpacity(0.3), 
+                      color: Colors.yellow.withOpacity(0.3),
                     ),
                     child: CircleAvatar(
                       radius: 75,
-                      backgroundImage: AssetImage(selectedAvatar), 
+                      backgroundImage: AssetImage(selectedAvatar),
                     ),
                   ),
                 ),
@@ -86,7 +108,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.025),
                 child: CustomTextField(
-                  hintText: "John Safwat",
+                  controller: viewModel?.nameController,
+                  hintText: args.name,
                   prefixIcon: Icon(Icons.person, color: Colors.white),
                 ),
               ),
@@ -94,6 +117,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.025),
                 child: CustomTextField(
+                  controller: viewModel?.phoneController,
                   hintText: "0120000000",
                   keyboard: TextInputType.phone,
                   prefixIcon: Icon(Icons.phone, color: Colors.white),
@@ -104,7 +128,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, ForgotPasswordScreen.routeName);
+                    Navigator.pushReplacementNamed(
+                        context, ForgotPasswordScreen.routeName);
                   },
                   child: Text(
                     AppLocalizations.of(context)!.reset_password,
@@ -125,7 +150,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         borderColor: Colors.red,
                         textStyle: AppStyles.regular20WhiteRoboto,
                         onButtonClicked: () {
-                          viewModel.deleteAccount();
+                          viewModel?.deleteAccount();
                         },
                       ),
                     ),
@@ -137,7 +162,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         backgroundColor: Colors.amber,
                         borderColor: Colors.yellow,
                         onButtonClicked: () {
-                          viewModel.updateProfile(1);
+                          viewModel?.updateProfile(selectedAvatarIndex);
                         },
                       ),
                     ),
@@ -150,7 +175,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
       ),
     );
   }
-
 
   void _showAvatarPicker(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -177,20 +201,25 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 ),
                 itemCount: avatarList.length,
                 itemBuilder: (context, index) {
-                  bool isSelected = selectedAvatarIndex == index; 
-
+                  bool isSelected = selectedAvatarIndex == index;
                   return GestureDetector(
                     onTap: () {
                       setState(() {
                         selectedAvatarIndex = index;
-                        selectedAvatar = avatarList[index]; 
+                        selectedAvatar = avatarList[index];
                       });
-                      setStateBottomSheet(() {}); 
+                      setStateBottomSheet(() {});
                     },
                     child: Container(
                       decoration: BoxDecoration(
+                        border: Border.all(
+                          width: width * 0.005,
+                          color: AppColors.yellowColor,
+                        ),
                         borderRadius: BorderRadius.circular(15),
-                        color: isSelected ? Colors.yellow.withOpacity(0.6) : Colors.transparent, 
+                        color: isSelected
+                            ? Colors.yellow.withOpacity(0.6)
+                            : Colors.transparent,
                       ),
                       padding: EdgeInsets.all(width * 0.02),
                       child: ClipRRect(
@@ -208,4 +237,3 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
   }
 }
-

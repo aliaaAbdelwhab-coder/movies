@@ -36,17 +36,17 @@ class MovieItem extends StatelessWidget {
           CarouselSlider.builder(
             itemCount: movies.length,
             itemBuilder: (context, index, realId) {
-            var  movie = movies[index];
+              var  movie = movies[index];
               return InkWell(
                 onTap: () {
-                
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => MovieDetailsView(
-                                movieId: movies[index].id!
-                                // movieName: movies[index].title,
-                              )));
+                              movieId: movies[index].id!
+                            // movieName: movies[index].title,
+                          )));
                   print('Go To Movie Details');
                 },
                 child: Container(
@@ -66,8 +66,12 @@ class MovieItem extends StatelessWidget {
                           // width: width *0.1,
                           // height: height *.1,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
+
+                          placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.darkGreyColor,
+                              )),
+
                           errorWidget: (context, url, error) =>
                               Icon(Icons.error, color: Colors.red),
 
@@ -111,9 +115,9 @@ class MovieItem extends StatelessWidget {
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       colors: [
-                                    Colors.black.withOpacity(0.8),
-                                    Colors.transparent
-                                  ],
+                                        Colors.black.withOpacity(0.8),
+                                        Colors.transparent
+                                      ],
                                       begin: Alignment.bottomCenter,
                                       end: Alignment.topCenter)),
                               child: Text(
@@ -126,7 +130,7 @@ class MovieItem extends StatelessWidget {
                   ),
                 ),
               );
-          
+
             },
             options: CarouselOptions(
               height: height * .5,
