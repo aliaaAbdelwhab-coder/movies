@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/api/api_manager.dart';
-import 'package:movies/ui/tabs/browse/cubit/browseStates.dart';
+import 'package:movies/ui/tabs/browse/cubit/browseGetMoviesStates.dart';
 
-class Browseviewmodle extends Cubit<BrowMoviessestates> {
-  Browseviewmodle() : super(BrowseMoviesLoadingState());
+class BrowseGetMoviesviewmodle extends Cubit<BrowGetMoviessestates> {
+  BrowseGetMoviesviewmodle() : super(BrowseMoviesLoadingState());
 ApiManager apiManager = ApiManager();
   void getBrowsMovies (String genre)async{
     

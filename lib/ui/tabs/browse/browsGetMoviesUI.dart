@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/ui/tabs/browse/cubit/browseStates.dart';
-import 'package:movies/ui/tabs/browse/cubit/browseViewModle.dart';
+import 'package:movies/ui/tabs/browse/cubit/browseGetMoviesStates.dart';
+import 'package:movies/ui/tabs/browse/cubit/browseGetMoviesViewModle.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/widget/MovieItemWidget.dart';
@@ -9,7 +9,7 @@ import 'package:movies/widget/MovieItemWidget.dart';
 class Browsgetmoviesui extends StatelessWidget {
   String genre;
   Browsgetmoviesui({required this.genre});
-  Browseviewmodle viewModle = Browseviewmodle();
+  BrowseGetMoviesviewmodle viewModle = BrowseGetMoviesviewmodle();
 
   @override
   Widget build(BuildContext context) {
