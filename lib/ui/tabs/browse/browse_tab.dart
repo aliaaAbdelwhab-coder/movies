@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
 
@@ -13,9 +15,34 @@ import 'package:movies/utils/app_styles.dart';
 import 'cubit/browse states.dart';
 
 class BrowseTab extends StatefulWidget {
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/ui/tabs/browse/cubit/browse%20view%20model.dart';
+import 'package:movies/ui/tabs/browse/genre%20category.dart';
+import 'package:movies/utils/app_colors.dart';
+import 'package:movies/utils/app_styles.dart';
+
+
+import 'cubit/browse states.dart';
+
+class BrowseTab extends StatefulWidget {
   static const String routeName = 'browse_screen';
 
   const BrowseTab({super.key});
+
+  @override
+  State<BrowseTab> createState() => _BrowseTabState();
+}
+
+class _BrowseTabState extends State<BrowseTab> {
+  int selectedIndex=0;
+BrowseViewModel viewModel=BrowseViewModel();
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    viewModel.fetchGenres();
+  }
 
   @override
   State<BrowseTab> createState() => _BrowseTabState();
