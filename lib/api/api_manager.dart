@@ -14,14 +14,15 @@ import 'package:movies/models/similar_model.dart';
 import 'package:movies/ui/tabs/profile/get_profile_model.dart';
 
 import '../../../api/apiConstatnts.dart';
-import '../models/MovieResponse.dart';
+
 
 class ApiManager {
 
 
-  Future<MovieResponse?> getMovies() async {
+  Future<MovieResponse?> getMovies({String? genre}) async {
     Uri url = Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.moviesEndPoint ,{
-      'sort_by' : 'year'
+      'sort_by' : 'year',
+      'genre':genre
     });
     try {
       var response = await http.get(url);

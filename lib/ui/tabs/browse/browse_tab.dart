@@ -77,6 +77,7 @@ BrowseViewModel viewModel=BrowseViewModel();
                                 .toList(),
                         ),
                     ),
+                    Expanded(child: Browsgetmoviesui(genre:state.genres.elementAt(selectedIndex) ,))
                   ],
                 ),
               ),
