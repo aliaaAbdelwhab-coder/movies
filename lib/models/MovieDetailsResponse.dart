@@ -85,10 +85,10 @@ class MovieDetails {
 
 
   MovieDetails.fromJson(dynamic json) {
-    movie = json['movie'] != null ? Movie.fromJson(json['movie']) : null;
+    movie = json['movie'] != null ? MovieInMovieDetails.fromJson(json['movie']) : null;
   }
 
-  Movie? movie;
+  MovieInMovieDetails? movie;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -132,8 +132,8 @@ class MovieDetails {
 /// date_uploaded : "2015-10-31 20:46:37"
 /// date_uploaded_unix : 1446320797
 
-class Movie {
-  Movie({
+class MovieInMovieDetails {
+  MovieInMovieDetails({
     this.id,
     this.url,
     this.imdbCode,
@@ -168,7 +168,7 @@ class Movie {
     this.dateUploadedUnix,
   });
 
-  Movie.fromJson(dynamic json) {
+  MovieInMovieDetails.fromJson(dynamic json) {
     id = json['id'];
     url = json['url'];
     imdbCode = json['imdb_code'];
