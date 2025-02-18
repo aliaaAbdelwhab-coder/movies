@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/Register/register_modle.dart';
 import 'package:movies/ui/login/LoginModel.dart';
 import 'package:movies/ui/login/saveToken.dart';
 import 'package:movies/ui/tabs/profile/cubit/update_profile_repository.dart';
@@ -9,8 +8,8 @@ import 'package:movies/ui/tabs/profile/cubit/update_profile_states.dart';
 class UpdateProfileBloc extends Cubit<UpdateProfileState> {
   UpdateProfileBloc() : super(UpdateProfileInitialState());
   UpdateProfileRepository repository = UpdateProfileRepository();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   LoginModel model = LoginModel();
 
   void updateProfile(int avatarId) async {

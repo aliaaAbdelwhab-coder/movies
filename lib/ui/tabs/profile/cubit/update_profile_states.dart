@@ -8,7 +8,7 @@ class UpdateProfileInitialState extends UpdateProfileState {}
 class UpdateProfileLoadingState extends UpdateProfileState {}
 
 class UpdateProfileSuccessState extends UpdateProfileState {
-  final UpdateProfileModel user;
+  UpdateProfileModel user;
   UpdateProfileSuccessState(this.user);
 }
 
