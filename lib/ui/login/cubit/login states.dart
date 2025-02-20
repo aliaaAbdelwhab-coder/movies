@@ -10,7 +10,8 @@ class ErrorLoginState extends LoginStates{
 }
 
 class SuccessLoginState extends LoginStates{
-  String SuccessMessage;
+  String successMessage;
   String data;
-  SuccessLoginState({required this.SuccessMessage, required this.data});
+
+  SuccessLoginState({required this.successMessage, required this.data});
 }

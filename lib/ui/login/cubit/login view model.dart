@@ -13,7 +13,7 @@ class LoginViewModel extends Cubit<LoginStates> {
   LoginViewModel() : super(InitialLoginState());
 
   TextEditingController emailController =
-      TextEditingController(text: "Mina2@gmail.com");
+      TextEditingController(text: "Mina@gmail.com");
   TextEditingController passwordController =
       TextEditingController(text: "Mina@1234");
   var formKey = GlobalKey<FormState>();
@@ -43,8 +43,7 @@ class LoginViewModel extends Cubit<LoginStates> {
         } else {
           saveToken(loginResponse.data!);
           emit(SuccessLoginState(
-            
-              SuccessMessage: loginResponse.message!,
+              successMessage: loginResponse.message!,
               data: loginResponse.data!));
         }
       } catch (e) {

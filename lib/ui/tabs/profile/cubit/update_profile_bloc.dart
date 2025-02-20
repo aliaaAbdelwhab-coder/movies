@@ -33,6 +33,7 @@ class UpdateProfileBloc extends Cubit<UpdateProfileState> {
     emit(DeleteAccountLoadingState());
     try {
       await repository.deleteAccount(token!);
+      removeToken();
       emit(DeleteAccountSuccessState());
     } catch (e) {
       emit(DeleteAccountErrorState(e.toString()));
