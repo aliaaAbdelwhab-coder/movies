@@ -20,13 +20,9 @@ import '../../../api/apiConstatnts.dart';
 
 
 class ApiManager {
-
-
-  Future<MovieResponse?> getMovies({String? genre}) async {
+  Future<MovieResponse?> getMovies({String? genre, String? search}) async {
     Uri url = Uri.https(Apiconstatnts.baseUrl, Apiconstatnts.moviesEndPoint ,{
-      'sort_by' : 'year',
-      'genre':genre
-    });
+      'sort_by' : 'year', 'genre': genre, 'query_term': search});
     try {
       var response = await http.get(url);
 

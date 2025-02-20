@@ -41,8 +41,7 @@ class Browsgetmoviesui extends StatelessWidget {
                   childAspectRatio: 0.7,
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
-
-                  return Movieitemwidget(
+                  return MovieItemWidget(
                       movieId: state.movies[index].id!,
                       image: state.movies[index].mediumCoverImage ??'',
                       rating: state.movies[index].rating ?? 0
