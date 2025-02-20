@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 // import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
+
 import 'package:movies/ui/tabs/browse/cubit/browse%20view%20model.dart';
 import 'package:movies/ui/tabs/browse/genre%20category.dart';
 import 'package:movies/utils/app_colors.dart';
@@ -73,13 +75,15 @@ class _BrowseTabState extends State<BrowseTab> {
                             .toList(),
                       ),
                     ),
+
                     // Expanded(
                     //     child: Browsgetmoviesui(
                     //         genre: state.genres.elementAt(selectedIndex)))
                   ],
                 ),
+
               ),
-            );
+          );
             // return Expanded(
             //   child: ListView.builder(
             //     scrollDirection: Axis.horizontal,
