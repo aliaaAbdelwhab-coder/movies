@@ -104,5 +104,6 @@ class _BrowseTabState extends State<BrowseTab> {
         },
       ),
     );
+
   }
 }

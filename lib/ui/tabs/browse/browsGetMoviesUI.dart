@@ -7,6 +7,7 @@ import 'package:movies/utils/app_styles.dart';
 import 'package:movies/widget/MovieItemWidget.dart';
 
 class Browsgetmoviesui extends StatelessWidget {
+  
   String genre;
   Browsgetmoviesui({required this.genre});
   BrowseGetMoviesviewmodle viewModle = BrowseGetMoviesviewmodle();
