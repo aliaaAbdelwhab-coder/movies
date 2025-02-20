@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/models/MovieDetailsResponse.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 
-class Movieitemwidget extends StatelessWidget {
+class MovieItemWidget extends StatelessWidget {
   int movieId;
   String image;
   num rating;
-  Movieitemwidget(
+
+  MovieItemWidget(
       {required this.movieId, required this.image, required this.rating});
 
   @override
@@ -48,8 +48,8 @@ class Movieitemwidget extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal:size.width*0.03, 
                   vertical:  size.height*0.015,
                   ),
-                   width:size.width*0.15,
-                   height: size.height*0.035,
+                  width: size.width * 0.16,
+                  height: size.height*0.035,
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.black54,

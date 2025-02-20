@@ -140,7 +140,7 @@ class _MovieItemState extends State<MovieItem> {
                     );
                   },
                   options: CarouselOptions(
-                    height: height * .5,
+                    height: height * .48,
                     viewportFraction: 0.72,
                     aspectRatio: 2,
                     autoPlay: true,

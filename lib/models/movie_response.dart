@@ -1,4 +1,3 @@
-
 class MovieResponse {
   String? status;
   String? statusMessage;
