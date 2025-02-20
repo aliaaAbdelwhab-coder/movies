@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/ui/login/login%20screen.dart';
+import 'package:movies/ui/login/saveToken.dart';
 import 'package:movies/ui/tabs/profile/cubit/get_profile_states.dart';
 import 'package:movies/ui/tabs/profile/cubit/get_profile_view_model.dart';
 import 'package:movies/ui/tabs/profile/update_profile.dart';
@@ -155,8 +156,12 @@ class _ProfileTabState extends State<ProfileTab> {
                                   child: CustomElevatedButton(
                                     text: AppLocalizations.of(context)!.exit,
                                     onButtonClicked: () {
-                                      Navigator.pushReplacementNamed(
-                                          context, LoginScreen.routeName);
+                                      removeToken();
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        LoginScreen.routeName,
+                                        (route) => false,
+                                      );
                                     },
                                     backgroundColor: AppColors.redColor,
                                     textStyle: AppStyles.regular20WhiteRoboto,

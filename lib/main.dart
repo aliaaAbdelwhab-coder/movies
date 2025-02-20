@@ -21,13 +21,17 @@ import 'on_boarding_screens/Introduction_screen.dart';
 import 'on_boarding_screens/on_boarding_screen.dart';
 
 var initScreen;
-var initRoute;
+late final String? initRoute;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  // initRoute =
-  if (getToken() != null) {}
+  var token = await getToken();
+  if (token != null && token.isNotEmpty) {
+    initRoute = Home.homeRoute;
+  } else {
+    initRoute = LoginScreen.routeName;
+  }
   initScreen = await prefs.getInt("initScreen");
   runApp(MyApp());
   await prefs.setInt("initScreen", 1);
@@ -36,14 +40,16 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (BuildContext context) => LocalizationBloc(),
-      child: BlocBuilder<LocalizationBloc, localizationState>(builder: (context, state) {
+      child: BlocBuilder<LocalizationBloc, localizationState>(
+          builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.myTheme,
-          initialRoute: initScreen == 0 || initScreen == null ? IntroductionScreen.routeName: Home.homeRoute,
+          initialRoute: initScreen == 0 || initScreen == null
+              ? IntroductionScreen.routeName
+              : initRoute,
           routes: {
             IntroductionScreen.routeName: (context) => IntroductionScreen(),
             OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
@@ -61,10 +67,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: AppLocalizations.supportedLocales,
           locale: Locale(state.local),
         );
-      }
-      ),
-
-
+      }),
     );
   }
 }

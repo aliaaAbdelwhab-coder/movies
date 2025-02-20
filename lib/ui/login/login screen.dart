@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Dialogutils.hideLoading(context: context);
           Dialogutils.showMessage(
               context: context,
-              message: state.SuccessMessage,
+              message: state.successMessage,
               title: "success",
               posActionsName: "OK",
               posAcitons: () {
