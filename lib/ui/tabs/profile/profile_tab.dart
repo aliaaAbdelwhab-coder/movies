@@ -143,7 +143,10 @@ class ProfileTab extends StatelessWidget {
                       height: height * 0.5,
                       child: TabBarView(
                         children: [
-                          // Watch List Content
+                          Center(
+                            child: watch_list_ui(), // Use MovieItemWidget here
+                            ),
+                            watch_list_ui(),
                           Center(
                             child: Image.asset(
                               AssetsManager.popCorn,
@@ -166,6 +169,15 @@ class ProfileTab extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget watch_list_ui() {
+    return Center(
+      child: Text(
+        "Watch List UI",
+        style: AppStyles.regular16WhiteRoboto,
       ),
     );
   }
