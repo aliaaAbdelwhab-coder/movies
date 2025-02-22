@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/Register/cubit/RegisterStates.dart';
 import 'package:movies/Register/cubit/RegisterViewmodle.dart';
-import 'package:movies/home.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/utils/assets_manager.dart';
@@ -11,7 +11,6 @@ import 'package:movies/utils/dialogUtils.dart';
 import 'package:movies/widget/LocalizationToggleswitch.dart';
 import 'package:movies/widget/button%20widget.dart';
 import 'package:movies/widget/text%20field%20widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../utils/app_colors.dart';
 class Registerui extends StatefulWidget {

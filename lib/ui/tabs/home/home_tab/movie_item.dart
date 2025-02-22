@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movies/models/movie_response.dart';
 import 'package:movies/ui/tabs/home/movei_details/movie_details_view.dart';
 import 'package:movies/utils/app_colors.dart';
@@ -9,7 +8,7 @@ import 'package:movies/utils/app_styles.dart';
 
 class MovieItem extends StatefulWidget {
   List<MoviesData> movies;
-
+  List<MoviesData>? allMovies;
   MovieItem({required this.movies});
 
   @override
@@ -163,30 +162,29 @@ class _MovieItemState extends State<MovieItem> {
                 horizontal: width * 0.02, vertical: height * 0.01),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(AppLocalizations.of(context)!.action,
-                        style: AppStyles.regular20WhiteRoboto),
-                    Row(
-                      children: [
-                        Text(AppLocalizations.of(context)!.see_more,
-                            style: AppStyles.regular16YellowRoboto),
-                        SizedBox(
-                          width: width * 0.02,
-                        ),
-                        const Icon(
-                          Icons.arrow_forward,
-                          color: AppColors.yellowColor,
-                          size: 15,
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                // ListView.builder(itemBuilder: (context, index) {
-                //   return MovieItem(movies: 'null');
-                // },)
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Text(
+                //         AppLocalizations.of(context)!.action,
+                //         style: AppStyles.regular20WhiteRoboto
+                //     ),
+                //     Row(
+                //       children: [
+                //         Text(AppLocalizations.of(context)!.see_more,
+                //             style: AppStyles.regular16YellowRoboto),
+                //         SizedBox(
+                //           width: width * 0.02,
+                //         ),
+                //         const Icon(
+                //           Icons.arrow_forward,
+                //           color: AppColors.yellowColor,
+                //           size: 15,
+                //         )
+                //       ],
+                //     )
+                //   ],
+                // ),
               ],
             ),
           )
