@@ -15,17 +15,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int selectedIndex = 0;
+  List<Widget> tabs = [
+    HomeTab(),
+    SearchTab(),
+    BrowseTab(),
+    ProfileTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
-    List<Widget> tabs = [
-      HomeTab(),
-      SearchTab(),
-      BrowseTab(),
-      ProfileTab(),
-    ];
+
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: Theme(

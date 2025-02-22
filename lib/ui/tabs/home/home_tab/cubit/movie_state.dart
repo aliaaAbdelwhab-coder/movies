@@ -1,20 +1,39 @@
-
-
 import 'package:movies/models/movie_response.dart';
 
-abstract class MovieState {}
+abstract class HomeTabState {}
 
-class MoviesInitialState extends MovieState {}
+class HomeMoviesInitialState extends HomeTabState {}
 
-class MoviesLoadingState extends MovieState {}
+/////////////// Available Movies //////////////////
+class HomeMoviesLoadingState extends HomeTabState {}
 
-class MoviesErrorState extends MovieState {
+class HomeMoviesErrorState extends HomeTabState {
   String errorMessage;
-  MoviesErrorState({required this.errorMessage});
+
+  HomeMoviesErrorState({required this.errorMessage});
 }
 
-class MoviesSuccessState extends MovieState {
+class HomeMoviesSuccessState extends HomeTabState {
   List<MoviesData> movies;
 
-  MoviesSuccessState({required this.movies});
+  HomeMoviesSuccessState({required this.movies});
+}
+
+/////////////// All Movies //////////////////
+class GetAllMoviesLoadingState extends HomeTabState {}
+
+class GetAllMoviesErrorState extends HomeTabState {
+  String errorMessage;
+
+  GetAllMoviesErrorState({required this.errorMessage});
+}
+
+class GetAllMoviesSuccessState extends HomeTabState {
+  final List<MoviesData>? allMovies;
+  String? genres;
+
+  GetAllMoviesSuccessState({
+    this.allMovies,
+    this.genres,
+  });
 }

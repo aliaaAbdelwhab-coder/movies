@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movies/Register/registerUI.dart';
-import 'package:movies/home.dart';
+import 'package:movies/ui/home_screen/home.dart';
 import 'package:movies/ui/login/cubit/login%20states.dart';
 import 'package:movies/ui/login/cubit/login%20view%20model.dart';
 import 'package:movies/widget/LocalizationToggleswitch.dart';

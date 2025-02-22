@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies/home.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../utils/assets_manager.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
 import 'on_boarding_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroductionScreen extends StatelessWidget {
   static const String routeName = 'IntroductionScreen';

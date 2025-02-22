@@ -8,9 +8,10 @@ class MovieItemWidget extends StatelessWidget {
   int movieId;
   String image;
   num rating;
+  String? genre;
 
   MovieItemWidget(
-      {required this.movieId, required this.image, required this.rating});
+      {required this.movieId, required this.image, required this.rating, this.genre});
 
   @override
   Widget build(BuildContext context) {
