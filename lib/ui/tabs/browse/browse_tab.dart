@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
 
 // import 'package:movies/ui/tabs/browse/browsGetMoviesUI.dart';
 
@@ -76,9 +77,9 @@ class _BrowseTabState extends State<BrowseTab> {
                       ),
                     ),
 
-                    // Expanded(
-                    //     child: Browsgetmoviesui(
-                    //         genre: state.genres.elementAt(selectedIndex)))
+                    Expanded(
+                        child: Browsgetmoviesui(
+                            genre: state.genres.elementAt(selectedIndex)))
                   ],
                 ),
 
