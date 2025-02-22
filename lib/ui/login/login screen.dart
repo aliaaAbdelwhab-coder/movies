@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movies/Register/registerUI.dart';
 import 'package:movies/home.dart';
 import 'package:movies/ui/login/cubit/login%20states.dart';
@@ -208,6 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future signIn() async {
-    await GoogleSignInApi.login();
+    // await GoogleSignInApi.login();
+    signInWithGoogle();
   }
 }
