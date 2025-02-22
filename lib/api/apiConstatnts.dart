@@ -11,4 +11,10 @@ class Apiconstatnts {
   static String moviesEndPoint = '/api/v2/list_movies.json';
   static String moviesDetials = "/api/v2/movie_details.json";
   static String movieSuggestions = "/api/v2/movie_suggestions.json";
+  static String addfavorites = "/favorites/add" ;
+  static String getfavorites = "/favorites/all" ;
+  static String removefavorites = "/favorites/is-favorite/movieId" ;
+  static String isfavorites = "/favorites/is-favorite/movieId" ;
+  
+  
 }

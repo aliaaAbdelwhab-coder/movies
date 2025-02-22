@@ -43,11 +43,11 @@ class Registerviewmodle extends Cubit<Registerstates> {
         
         RegisterModle registerResponse = RegisterModle.fromJson(json);
         if (registerResponse.statusCode != null) {
-          emit(ErrorState(errorMessage: registerResponse.message!));
+          emit(ErrorState(errorMessage: registerResponse.message![0]));
         } else {
           
           emit(SucsessStates(
-              sucsessMessage: registerResponse.message!,
+              sucsessMessage: registerResponse.message![0],
               data: registerResponse.data!));
         }
       } catch (e) {
