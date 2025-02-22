@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/ui/login/login%20screen.dart';
 
-import '../home.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
 

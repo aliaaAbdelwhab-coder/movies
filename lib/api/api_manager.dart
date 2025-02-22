@@ -1,18 +1,9 @@
 
-import 'package:movies/models/MovieDetailsResponse.dart';
-
-
-import 'package:movies/models/MovieDetailsResponse.dart';
-
-import 'package:movies/models/movie_response.dart';
-import 'package:movies/models/similar_model.dart';
-
-import '../../../api/apiConstatnts.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:movies/models/MovieDetailsResponse.dart';
-
+import 'package:movies/models/movie_response.dart';
 import 'package:movies/models/similar_model.dart';
 import 'package:movies/ui/tabs/profile/get_profile_model.dart';
 
