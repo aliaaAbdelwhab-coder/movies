@@ -6,7 +6,6 @@ import 'package:movies/ui/tabs/home/movei_details/similar/cubit/states.dart';
 import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_styles.dart';
 import 'package:movies/widget/MovieItemWidget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Moviedetailssimilar extends StatefulWidget {
   int movieId;
@@ -54,8 +53,8 @@ class _MoviedetailssimilarState extends State<Moviedetailssimilar> {
               spacing:size.width*0.03  , // Horizontal space between items
               runSpacing: size.height*0.02,  // Vertical space between lines             
                 children: state.movies.map((movie) {
-              return Movieitemwidget(
-                  movieId: movie.id!,
+                  return MovieItemWidget(
+                      movieId: movie.id!,
                   image: movie.mediumCoverImage!,
                   rating: movie.rating ?? 0.0);
             }).toList());
