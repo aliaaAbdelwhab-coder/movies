@@ -1,12 +1,12 @@
 class RegisterModle {
   int? statusCode;
-  String? message;
+List  <String>? message;
   Data? data;
   
   RegisterModle({this.message, this.data, this.statusCode});
 
   RegisterModle.fromJson(Map<String, dynamic> json) {
-    message = json["message"];
+    message = [json["message"]];
     data = json["data"] == null ? null : Data.fromJson(json["data"]);
     statusCode = json["statusCode"];
   }

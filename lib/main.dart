@@ -15,6 +15,7 @@ import 'package:movies/ui/tabs/profile/update_profile.dart';
 import 'package:movies/ui/tabs/search/search_tab.dart';
 import 'package:movies/utils/app_theme.dart';
 import 'package:movies/widget/my_bloc_observer.dart';
+import 'package:movies/widget/sheardPrefrences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'on_boarding_screens/Introduction_screen.dart';
@@ -24,6 +25,7 @@ var initScreen;
 late final String? initRoute;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferenceUtils.init();
   Bloc.observer = MyBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = await getToken();

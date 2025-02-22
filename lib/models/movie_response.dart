@@ -3,11 +3,15 @@ class MovieResponse {
   String? statusMessage;
   Data? data;
   Meta? meta;
+  num? statusCode;
+  String? message;
 
-  MovieResponse({this.status, this.statusMessage, this.data, this.meta});
+  MovieResponse(
+      {this.status, this.statusMessage, this.data, this.meta, this.statusCode , this.message});
 
   MovieResponse.fromJson(Map<String, dynamic> json) {
     status = json["status"];
+    statusCode = json["statusCode"];
     statusMessage = json["status_message"];
     data = json["data"] == null ? null : Data.fromJson(json["data"]);
     meta = json["@meta"] == null ? null : Meta.fromJson(json["@meta"]);
@@ -21,10 +25,10 @@ class MovieResponse {
     final Map<String, dynamic> _data = <String, dynamic>{};
     _data["status"] = status;
     _data["status_message"] = statusMessage;
-    if(data != null) {
+    if (data != null) {
       _data["data"] = data?.toJson();
     }
-    if(meta != null) {
+    if (meta != null) {
       _data["@meta"] = meta?.toJson();
     }
     return _data;
@@ -37,7 +41,11 @@ class Meta {
   num? apiVersion;
   String? executionTime;
 
-  Meta({this.serverTime, this.serverTimezone, this.apiVersion, this.executionTime});
+  Meta(
+      {this.serverTime,
+      this.serverTimezone,
+      this.apiVersion,
+      this.executionTime});
 
   Meta.fromJson(Map<String, dynamic> json) {
     serverTime = json["server_time"];
@@ -72,7 +80,9 @@ class Data {
     movieCount = json["movie_count"];
     limit = json["limit"];
     pageNumber = json["page_number"];
-    movies = json["movies"] == null ? null : (json["movies"] as List).map((e) => MoviesData.fromJson(e)).toList();
+    movies = json["movies"] == null
+        ? null
+        : (json["movies"] as List).map((e) => MoviesData.fromJson(e)).toList();
   }
 
   static List<Data> fromList(List<Map<String, dynamic>> list) {
@@ -84,7 +94,7 @@ class Data {
     _data["movie_count"] = movieCount;
     _data["limit"] = limit;
     _data["page_number"] = pageNumber;
-    if(movies != null) {
+    if (movies != null) {
       _data["movies"] = movies?.map((e) => e.toJson()).toList();
     }
     return _data;
@@ -119,7 +129,33 @@ class MoviesData {
   String? dateUploaded;
   num? dateUploadedUnix;
 
-  MoviesData({this.id, this.url, this.imdbCode, this.title, this.titleEnglish, this.titleLong, this.slug, this.year, this.rating, this.runtime, this.genres, this.summary, this.descriptionFull, this.synopsis, this.ytTrailerCode, this.language, this.mpaRating, this.backgroundImage, this.backgroundImageOriginal, this.smallCoverImage, this.mediumCoverImage, this.largeCoverImage, this.state, this.torrents, this.dateUploaded, this.dateUploadedUnix});
+  MoviesData(
+      {this.id,
+      this.url,
+      this.imdbCode,
+      this.title,
+      this.titleEnglish,
+      this.titleLong,
+      this.slug,
+      this.year,
+      this.rating,
+      this.runtime,
+      this.genres,
+      this.summary,
+      this.descriptionFull,
+      this.synopsis,
+      this.ytTrailerCode,
+      this.language,
+      this.mpaRating,
+      this.backgroundImage,
+      this.backgroundImageOriginal,
+      this.smallCoverImage,
+      this.mediumCoverImage,
+      this.largeCoverImage,
+      this.state,
+      this.torrents,
+      this.dateUploaded,
+      this.dateUploadedUnix});
 
   MoviesData.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -145,7 +181,9 @@ class MoviesData {
     mediumCoverImage = json["medium_cover_image"];
     largeCoverImage = json["large_cover_image"];
     state = json["state"];
-    torrents = json["torrents"] == null ? null : (json["torrents"] as List).map((e) => Torrents.fromJson(e)).toList();
+    torrents = json["torrents"] == null
+        ? null
+        : (json["torrents"] as List).map((e) => Torrents.fromJson(e)).toList();
     dateUploaded = json["date_uploaded"];
     dateUploadedUnix = json["date_uploaded_unix"];
   }
@@ -166,7 +204,7 @@ class MoviesData {
     _data["year"] = year;
     _data["rating"] = rating;
     _data["runtime"] = runtime;
-    if(genres != null) {
+    if (genres != null) {
       _data["genres"] = genres;
     }
     _data["summary"] = summary;
@@ -181,7 +219,7 @@ class MoviesData {
     _data["medium_cover_image"] = mediumCoverImage;
     _data["large_cover_image"] = largeCoverImage;
     _data["state"] = state;
-    if(torrents != null) {
+    if (torrents != null) {
       _data["torrents"] = torrents?.map((e) => e.toJson()).toList();
     }
     _data["date_uploaded"] = dateUploaded;
@@ -206,7 +244,21 @@ class Torrents {
   String? dateUploaded;
   num? dateUploadedUnix;
 
-  Torrents({this.url, this.hash, this.quality, this.type, this.isRepack, this.videoCodec, this.bitDepth, this.audioChannels, this.seeds, this.peers, this.size, this.sizeBytes, this.dateUploaded, this.dateUploadedUnix});
+  Torrents(
+      {this.url,
+      this.hash,
+      this.quality,
+      this.type,
+      this.isRepack,
+      this.videoCodec,
+      this.bitDepth,
+      this.audioChannels,
+      this.seeds,
+      this.peers,
+      this.size,
+      this.sizeBytes,
+      this.dateUploaded,
+      this.dateUploadedUnix});
 
   Torrents.fromJson(Map<String, dynamic> json) {
     url = json["url"];
